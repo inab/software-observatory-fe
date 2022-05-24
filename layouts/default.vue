@@ -9,14 +9,6 @@
 }
 
 
-.nuxt{
-  padding-left: 6em;
-}
-
-.nuxt-link{
-  text-decoration-line: none;
-}
-
 </style>
 
 <script>

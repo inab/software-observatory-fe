@@ -18,7 +18,7 @@
             <v-col 
                 id="counts-text">
                 <span><h3>{{title}}</h3></span>
-                <span><h2>{{count}}</h2></span>
+                <span><h2>{{ Number(count).toLocaleString() }}</h2></span>
             </v-col>
         </v-row>
     </v-card>

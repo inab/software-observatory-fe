@@ -14,6 +14,9 @@
         </div>
         </v-col>
       </v-row>
+      <div class="source-card">
+        <TotalCard :count="total" />
+      </div>
     </v-container>
 </template>
 
@@ -31,8 +34,8 @@
         { title: 'GitHub', flex: 3, count:1676, label:'github'},
         { title: 'BitBucket', flex: 3, count:1676, label:'bitbucket'},
         { title: 'OEB', flex: 3, count:1676, label: 'OEB'}
-
-      ]
+      ],
+      total: '43987'
     }),
   }
 </script>

@@ -30,4 +30,12 @@
   margin: 2em
 }
 
+.nuxt{
+  height: 100%;
+}
+
+.nuxt-link{
+  text-decoration-line: none;
+}
+
 </style>
