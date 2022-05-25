@@ -21,5 +21,10 @@
                 <PlotSources />
             </v-col>
         </v-row>
+        <v-row>
+            <v-col>
+                <Completeness />
+            </v-col>
+        </v-row>
     </div>
 </template>
