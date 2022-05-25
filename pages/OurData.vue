@@ -22,12 +22,10 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col>
+            <v-col cols="6">
                 <Completeness />
             </v-col>
-        </v-row>
-        <v-row>
-            <v-col>
+            <v-col cols="6">
                 <PlotTypes />
             </v-col>
         </v-row>
