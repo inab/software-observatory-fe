@@ -26,5 +26,10 @@
                 <Completeness />
             </v-col>
         </v-row>
+        <v-row>
+            <v-col>
+                <PlotTypes />
+            </v-col>
+        </v-row>
     </div>
 </template>
