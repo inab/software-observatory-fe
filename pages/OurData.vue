@@ -10,8 +10,15 @@
             <v-col cols="12">
                 <h1>Data Overview</h1>
             </v-col>
+        </v-row>
+        <v-row>
             <v-col>
                 <PlotOverview />
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <PlotSources />
             </v-col>
         </v-row>
     </div>
