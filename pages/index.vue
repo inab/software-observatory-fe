@@ -1,6 +1,15 @@
 <template>
     <div>
-        <h1>Trends</h1>
+        <v-row>
+            <v-col cols="12">
+            <h1>Trends</h1>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <Licenses />
+            </v-col>
+        </v-row>
     </div>
 </template>
 
