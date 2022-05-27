@@ -67,7 +67,9 @@ export default {
                 },
                 yaxis: {
                     title: 'Number of instances'
-                }
+                },
+                autosize: true,
+                height: 400
             },
             config: {
                 responsive: true,

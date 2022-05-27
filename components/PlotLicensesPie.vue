@@ -48,8 +48,8 @@ export default {
         textinfo:"label",
         rotation: '152',
         marker: {
-          autocolorscale: true,
-          },
+          autocolorscale: true
+        },
         text: this.data_licenses.text,
         hovertemplate: '<b>%{label}</b><br>' +
                         '%{value:,d} instances<br>' +

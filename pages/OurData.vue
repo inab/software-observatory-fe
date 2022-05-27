@@ -2,7 +2,7 @@
     <div>
         <v-row>
             <v-col cols="12">
-            <h1>Data Sources</h1>
+            <h2>Data Sources</h2>
             </v-col>
             <MainCards />
         </v-row>
@@ -16,8 +16,8 @@
                 <PlotOverview />
             </v-col>
         </v-row>
-        <v-row>
-            <v-col>
+        <v-row justify="center">
+            <v-col cols="12">
                 <PlotSources />
             </v-col>
         </v-row>

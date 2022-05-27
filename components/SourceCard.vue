@@ -38,21 +38,21 @@ export default {
     margin: auto;
     padding: auto;
     width: 100%;
-    max-width: 3.5em;
+    max-width: 3.1em;
 }
 
 .v-card{
-    height: 5rem;
-    min-height: 5rem;
+    height: 4.5rem;
+    min-height: 4.5rem;
     width: 100%;
-    min-width:10em;
+    min-width:8em;
     display: inline-block;
     position: relative;
 }
 
 .v-card h3{
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: normal;
     margin: 0.2rem;
@@ -60,7 +60,7 @@ export default {
 
 .v-card h2{
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     line-height: normal;
     margin: 0.3rem;

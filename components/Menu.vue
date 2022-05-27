@@ -2,6 +2,7 @@
       <v-navigation-drawer
         permanent
         clipped
+        :mini-variant="mini"
       >
         <v-list
           nav
@@ -14,11 +15,11 @@
               :to="section.path"
               v-for="section in sections"
               :key="section.label"
-              link>
-                <v-list-item-icon>
-                  <v-icon>{{ section.icon }}</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>{{ section.label }}</v-list-item-title>
+              link 
+              >
+              <MenuIcon :icon="section.icon" :text="section.hover" />
+                
+                <v-list-item-title class="hidden-sm-and-down">{{ section.label }}</v-list-item-title>
               </v-list-item>
                 </v-list-item-group>
 
@@ -31,12 +32,23 @@
   export default {
     data: () => ({
      sections: [
-       {'label':'Trends', 'path':'/', 'icon': 'mdi-chart-line'},
-       {'label':'FAIRness', 'path':'Fairness', 'icon': 'mdi-bullseye'},
-       {'label':'Our Data', 'path':'OurData', 'icon': 'mdi-database'},
-       {'label':'About', 'path':'About', 'icon': 'mdi-lightbulb-outline'}
+       {'label':'Trends', 'path':'/', 'icon': 'mdi-chart-line', 'hover':'Trends'},
+       {'label':'FAIRness', 'path':'Fairness', 'icon': 'mdi-bullseye', 'hover':'FAIR'},
+       {'label':'Data', 'path':'OurData', 'icon': 'mdi-database', 'hover':'Data'},
+       {'label':'About', 'path':'About', 'icon': 'mdi-lightbulb-outline', 'hover':'About'}
      ]
     }),
+   computed: {
+      mini() {
+         switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return true
+          case 'sm': return true
+          case 'md': return false
+          case 'lg': return false
+          case 'xl': return false
+  }
+      }
+    }
   }
 </script>
 

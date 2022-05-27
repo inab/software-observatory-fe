@@ -48,7 +48,7 @@ export default {
                     categoryorder: 'total ascending'
                 },
                 xaxis: {
-                    title: 'Number of tools'
+                    title: 'Number of instances'
                 },
                 showlegend: false
             },

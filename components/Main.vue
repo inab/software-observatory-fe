@@ -6,17 +6,17 @@
     <v-row>
         <v-col
         cols="2"
-        md="2"
+        md="3"
         lg="2"
-        sm="4"
+        sm="2"
         >
           <Menu />
         </v-col>
         <v-col
         cols="10"
-        md="10"
+        md="9"
         lg="10"
-        sm="8">
+        sm="10">
             <Nuxt class="nuxt"/>
         </v-col>
         

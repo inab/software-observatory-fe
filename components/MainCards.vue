@@ -45,6 +45,6 @@
   margin: auto;
   padding: auto;
   width: 90%;
-  width: 14em;
+  width: 13em;
 }
 </style>
