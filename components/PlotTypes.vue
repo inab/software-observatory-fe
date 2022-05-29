@@ -1,7 +1,5 @@
 <template>
-  <v-card>
-    <div id="plot_4"></div>
-  </v-card>
+    <div id="plot_23"></div>
 </template>
 <style scoped>
 #plot {
@@ -50,7 +48,10 @@ export default {
                 xaxis: {
                     title: 'Number of instances'
                 },
-                showlegend: false
+                showlegend: false,
+                margin: {
+                    t:4
+                }
             },
             config: {
                 responsive: true,
@@ -77,7 +78,7 @@ export default {
 
         }
 
-        Plotly.newPlot('plot_4', /* JSON object */ {
+        Plotly.newPlot('plot_23', /* JSON object */ {
             "data": [trace],
             "layout": this.layout,
             "config": this.config

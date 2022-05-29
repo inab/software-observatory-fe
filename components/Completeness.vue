@@ -1,7 +1,5 @@
 <template>
-  <v-card>
-    <div id="plot_3"></div>
-  </v-card>
+    <div id="plot_22"></div>
 </template>
 <style scoped>
 #plot {
@@ -9,10 +7,6 @@
   margin: 0%;
 }
 
-.v-card {
-  padding: 4em;
-  clear: left;
-}
 
 #plot .modebar {
   display: none !important;
@@ -47,7 +41,10 @@ export default {
                 yaxis2: {
                     title : 'Number of <br> instances'
                     },
-                showlegend: false
+                showlegend: false,
+                margin: {
+                    t:4
+                }
             },
             config: {
                 responsive: true,
@@ -79,7 +76,7 @@ export default {
 
         var data = [trace_bar, trace_line]
 
-        Plotly.newPlot('plot_3', /* JSON object */ {
+        Plotly.newPlot('plot_22', /* JSON object */ {
             "data": data,
             "layout": this.layout,
             "config": this.config

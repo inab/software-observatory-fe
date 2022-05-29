@@ -1,7 +1,5 @@
 <template>
-  <v-card>
-    <div id="plot_2"></div>
-  </v-card>
+    <div id="plot_21"></div>
 </template>
 
 <style scoped>
@@ -10,10 +8,6 @@
   margin: 0%;
 }
 
-.v-card {
-  padding: 4em;
-  clear: left;
-}
 
 #plot .modebar {
   display: none !important;
@@ -69,7 +63,10 @@ export default {
                     title: 'Number of instances'
                 },
                 autosize: true,
-                height: 400
+                height: 300,
+                margin: {
+                    t:0
+                }
             },
             config: {
                 responsive: true,
@@ -105,7 +102,7 @@ export default {
 
         data.push(line_data)
         console.log(data)
-        Plotly.newPlot('plot_2', /* JSON object */ {
+        Plotly.newPlot('plot_21', /* JSON object */ {
             "data": data,
             "layout": this.layout,
             "config": this.config

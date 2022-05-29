@@ -2,20 +2,23 @@
     <v-card 
         light
         rounded
-        class="pa-2"      
-        elevation="2">
+        elevation="3"
+        class="pr-3 pt-2 pl-3 pb-1">
         <v-row 
             dense
             align="center"
             >
-            <v-col cols="4" >
-                <div class="icon-cont">
-                <v-img
-                    :src="require(`@/static/${label}-logo-black.svg`)"
-                ></v-img>
-                </div>
+            <v-col cols="4">
+                <v-avatar 
+                color="#001752f8"
+                >
+                <img
+                    :src="require(`@/static/${label}-logo.svg`)"
+                >
+                </v-avatar>
             </v-col>
             <v-col 
+                cols="8" 
                 id="counts-text">
                 <span><h3>{{title}}</h3></span>
                 <span><h2>{{ Number(count).toLocaleString() }}</h2></span>
@@ -34,25 +37,21 @@ export default {
     text-align: right !important;
 }
 
-.icon-cont{
-    margin: auto;
-    padding: auto;
-    width: 100%;
-    max-width: 3.1em;
+.v-avatar img{
+    width: 85%;
 }
 
 .v-card{
-    height: 4.5rem;
     min-height: 4.5rem;
     width: 100%;
     min-width:8em;
     display: inline-block;
-    position: relative;
+
 }
 
 .v-card h3{
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 300;
     line-height: normal;
     margin: 0.2rem;
@@ -60,7 +59,7 @@ export default {
 
 .v-card h2{
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
     line-height: normal;
     margin: 0.3rem;

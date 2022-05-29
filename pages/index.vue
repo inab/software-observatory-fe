@@ -23,6 +23,19 @@
                         <Trends class="card-content" />
 				</v-card>
 			</v-tab-item>
+      <v-tab-item 
+            class="ma-5 mt-5 mt-md-0" 
+            :transition="false">
+				<v-card elevation="0" class="main-card">
+				</v-card>
+			</v-tab-item>
+      <v-tab-item 
+            class="ma-5 mt-5 mt-md-0" 
+            :transition="false">
+				<v-card elevation="0" class="main-card">
+            <Data class="card-content" />
+				</v-card>
+			</v-tab-item>
 		</v-tabs>
     </v-row>
 </v-container>

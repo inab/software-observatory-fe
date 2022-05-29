@@ -1,18 +1,11 @@
 <template>
-    <v-card>
         <div id="plot"></div>
-    </v-card>
 </template>
 
 <style scoped>
 #plot{
   padding: 0%;
   margin: 0%
-}
-
-.v-card{
-    padding: 4em;
-    clear: left;
 }
 
 
@@ -196,11 +189,11 @@ export default {
         range: [0.5, 22.5],
         automargin: true
       },
-      margin: {
-        pad: 2
-      },
       autosize: true,
-      height: 700,
+      margin: {
+        t:0,
+      },
+      height: 600,
       showlegend: false,
       font_size:12,
       font_color : 'black',

@@ -5,19 +5,17 @@
     <v-col>
         <v-card 
         dark
-        rounded    
-        elevation="2">
-        <v-row 
-            align="center"
-            style="height: 100%"
-            >
-            <v-col>
-                <div id="counts-text">
-                    <span><h3>Total</h3></span>
-                    <span><h2>{{ Number(count).toLocaleString() }}</h2></span>
-                </div>
-            </v-col>
-        </v-row>
+        rounded
+        class="mt-0 mr-2 pb-1 number-card" 
+        color="#001752f8" 
+        elevation="3">
+        <v-card-text  class="text-center number-text">
+         Total
+        </v-card-text>
+        <v-card-text class="text-center number">
+            {{ Number(count).toLocaleString() }}
+        </v-card-text>
+        
         </v-card>
     </v-col> 
         </v-row>
@@ -41,29 +39,27 @@ export default {
     margin-top: 2em;
 }
 
-
-.v-card{
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-    min-width:10em;
-    display: inline-block;
-    position: relative;
+.number-card{
+  word-break: break-all;
 }
 
-.v-card h3{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: bold;
-    margin: 0.2rem;
+.number{
+  font-size: 2.1rem;
+  color: white !important;
 }
 
-.v-card h2{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: bold;
-    margin: 0.3rem;
+.number-text{
+  color: white !important;
+  font-family: Roboto, sans-serif;
+  font-size: 1.3em;
+  font-weight: 300;
+  line-height: 1em;
+  word-break: initial;
+  padding-bottom: 0;
 }
+
+.number-highlight{
+  font-weight: 700;
+}
+
 </style>
