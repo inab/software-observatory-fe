@@ -1,40 +1,24 @@
 <template>
-    <v-div style="height:90%;position:relative">
-      <v-row>
-        
-      </v-row>
-
+       <v-tabs slider-size="1" right>
+      <v-tab>
+				<v-icon>mdi-chart-scatter-plot </v-icon>
+			</v-tab>
+        <v-tab>
+				<v-icon>mdi-book-open-variant</v-icon>
+			</v-tab>
+      <v-tab-item
+        :transition="false"
+        class="pt-2 pb-2 pr-2"
+        >
         <PlotLicensesBars />
-        <v-btn
-           icon
-           color="#2e579e"
-           elevation="1"
-           small
-           style="float: right;"
-          @click="overlay = !overlay"
-        >
-          <v-icon v-if="!overlay" color="#2e579e">mdi-information-variant</v-icon>
-          <v-icon v-else color="#2e579e" small>mdi-close</v-icon>
+        </v-tab-item>
+      <v-tab-item 
+            :transition="false"
+            class="pt-2 pb-2 pr-5">
+             <LicensesTable />
+      </v-tab-item>
 
-        </v-btn>
-
-         <v-overlay
-          :absolute="absolute"
-          :value="overlay"
-          :opacity=.9
-          color="white"
-          @click="overlay = false"
-        >
-          <LicensesTable />
-        </v-overlay>
-
-
-         
-        
-       
-        
-    </v-div>
-                
+      </v-tabs>                        
 </template>
 <script>
 export default {
@@ -47,8 +31,9 @@ export default {
 <style scoped>
 .v-btn{
     margin-right: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     margin-top: 0;
+
 }
 
 </style>

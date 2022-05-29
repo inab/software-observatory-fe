@@ -41,10 +41,12 @@ export default {
         },
         hoverlabel: { bgcolor: "#FFF" },
         autosize: true,
-        height: 320,
+        height: 300,
         margin: {
           autoexpand: true,
-          t:45
+          b:100,
+          t:20,
+          r:50
           }
       },
       config: {

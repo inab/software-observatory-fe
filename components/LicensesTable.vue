@@ -45,7 +45,35 @@ export default {
             c:  'What user wants with a few restrictions',
             d: 'What user wants without restrictions'
           },
-          {}
+          {a: 'Clause of the use',
+          b:'Derivative work must be attributed to creator opensource and copyleft',
+          c: 'Derivative work must be attributed to a creator',
+          d:'Derivative work must be attributed to a creator'
+          },
+          {
+            a:'Source code',
+            b:'Must be open',
+            c:'Don’t have to be open',
+            d:'No specific terms about the distribution of source code'
+          },
+          {
+            a:'Is creator liable for bugs?',
+            b:'Yes',
+            c:'No',
+            d:'No'
+          },
+          {
+            a: 'Re-licensing',
+            b:'Derivative work cannot be released as proprietary sotfware',
+            c:'Derivative work can be released under another license or as proprietary software',
+            d: 'Derivative work can be released under another license or as proprietary software'
+          },
+          {
+            a: 'Commercial restrictions', 
+            b:'Permitted',
+            c:'Permitted',
+            d:'Permitted'
+          }
           ]
     }),
   }

@@ -9,10 +9,10 @@ export default {
   data(){
     return {
       data_licenses: {
-          "ids": ["Total", "No license stated", "Unambiguous", "Open Source", "other", "Ambiguous", "BSD", "GPL", "MIT", "Artistic", "LGPL", "Apache", "other OS"], 
-          "parents": ["", "Total", "Total", "Unambiguous", "Unambiguous", "Total", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source"], 
-          "text": ["Total", "Total", "Total", "Unambiguous", "Unambiguous", "Total", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source", "Open Source"], 
-          "v": [43987, 24578, 17552, 14979, 2573, 1857, 785, 6691, 3686, 1570, 649, 980, 618]
+          "ids": ["Total", "No license stated", "Unambiguous", "Open Source", "other", "Ambiguous"], 
+          "parents": ["", "Total", "Total", "Unambiguous", "Unambiguous", "Total"], 
+          "text": ["Total", "Total", "Total", "Unambiguous", "Unambiguous", "Total"], 
+          "v": [43987, 24578, 17552, 14979, 2573, 1857]
         },
       layout: {
         yaxis: {
@@ -22,10 +22,10 @@ export default {
             title: ''
         },
 
-        height:500,
+        height:300,
         autosize: true,
         margin: {
-          t:70,
+          t:0,
           b:0,
           l:0,
           r:0
@@ -48,7 +48,8 @@ export default {
         textinfo:"label",
         rotation: '152',
         marker: {
-          autocolorscale: true
+          autocolorscale: true,
+          colorscale: [[0,'#992a22'], [0.333,'#d63b2f'],[0.666,'#f66257'], [1,'#fcc7c3']]
         },
         text: this.data_licenses.text,
         hovertemplate: '<b>%{label}</b><br>' +
