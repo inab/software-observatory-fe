@@ -17,6 +17,7 @@
 import Plotly from '../assets/plotly-2.12.1.min.js'
 
 export default {
+    props: ['small'],
     data() {
         return {
             counts: {
@@ -32,7 +33,7 @@ export default {
                 },
             nums: ['1', '2', '3', '4', '5'],
             colors_primary:['#1d4421', '#3d643f', '#5d865e', '#80aa80', '#a3cfa3', '#c9f5c8'],
-            colors_secondary:['#b72f1e', '#f88b69',  '#f9d3c6', '#0a589f'],
+            colors_secondary:['#b72f1e', '#f88b69',  '#f9d3c6', '#3669a3'],
             titles:{
                 'github': 'GitHub', 
                 'galaxy': 'Galaxy Europe',
@@ -54,7 +55,7 @@ export default {
                 "7": 43987, 
                 "8": 43987, 
                 "9": 43987},
-            layout: {
+            layout_base: {
                 barmode: 'stack',
                 xaxis: {
                     title: 'Number of sources'
@@ -65,7 +66,9 @@ export default {
                 autosize: true,
                 height: 300,
                 margin: {
-                    t:0
+                    autoexpand: true,
+                    t:0,
+                    b: 40
                 }
             },
             config: {
@@ -74,7 +77,6 @@ export default {
             }
     },
     mounted() {
-
         var colors = {
                 'github': this.colors_secondary[0], 
                 'galaxy': this.colors_primary[1],
@@ -108,6 +110,24 @@ export default {
             "config": this.config
             })
     },
+    computed:{
+        layout(){
+            var l = this.layout_base
+            console.log(this.small)
+            if(this.small){
+                l["legend"] = {orientation: "h", y:5, x:-0.2, size: 15}
+                console.log('small')
+                return l
+            }else{
+                l["legend"] = {}
+                console.log('big')
+                return l
+
+            }
+
+}
+
+    },
     methods: {
         build_bar_traces(colors){
             var traces = []
@@ -134,3 +154,8 @@ export default {
     }
 }
 </script>
+<style scoped>
+.js-plotly-plot .plotly .main-svg .infolayer .legend{
+    width: 100% !important;
+}
+</style>

@@ -28,11 +28,6 @@ export default {
 </script>
 
 <style scoped>
-#counts-text{
-    text-align: center !important;
-    vertical-align: middle !important;
-    height: 100%;
-}
 
 .main-row{
     height: 8em;

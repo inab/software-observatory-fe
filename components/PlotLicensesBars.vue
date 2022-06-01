@@ -8,7 +8,8 @@ import Plotly from '../assets/plotly-2.12.1.min.js'
 export default {
   data(){
     return {
-      data_licenses: {
+      lc: {"BSD": 785, "GPL": 6691, "MIT": 3686, "artistic": 1570, "LGPL": 649, "apache": 980, "CC": 341, "AGPL": 224, "CeCILL": 31, "AFL": 22},
+      data_licenses: {       
           "license": ["BSD", "GPL", "MIT", "Artistic", "LGPL", "Apache", "other OS"],
           "licenses_copyleft" : ['Artistic', 
                                   "MIT", 
@@ -16,9 +17,9 @@ export default {
                                   "BSD"],
           "counts_copyleft": [1570, 3686, 980, 785],
           "licenses_sp":["GPL", "AGPL", "LGPL", "CeCILL-C"],
-          "counts_sp":[6691, 649, 649, 543],
+          "counts_sp":[6691, 224, 649, 31],
           "licenses_data":['CC'],
-          "counts_data":[335]
+          "counts_data":[341]
         },
       labs: {
         'Artistic': '<a href="https://opensource.org/licenses/artistic-license">Artistic</a>',
@@ -44,7 +45,7 @@ export default {
         height: 300,
         margin: {
           autoexpand: true,
-          b:100,
+          b:50,
           t:20,
           r:50
           }
@@ -56,20 +57,9 @@ export default {
     }
   },
   mounted() {
-    var trace = {
-        type: "bar",
-        x: this.data_licenses['license'],
-        y: this.data_licenses['count'],
-
-        text: this.data_licenses.text,
-        hovertemplate: '<b>%{label}</b><br>' +
-                        '%{value:,d} instances<br>' +
-                        '%{percentParent:.1%} of %{text}<extra></extra>'
-    } 
-
-    var trace_1 = this.build_trace(this.data_licenses['licenses_copyleft'], this.data_licenses['counts_copyleft'], 'copyleft', '#eb9b34', '#eb9b34', this.labs)
-    var trace_2 = this.build_trace(this.data_licenses['licenses_sp'], this.data_licenses['counts_sp'], 'permissive', '#f5bb71', '#eb9b34', this.labs)
-    var trace_3 = this.build_trace(this.data_licenses['licenses_data'], this.data_licenses['counts_data'], 'data', '#9e5f66','#73343b', this.labs)
+     var trace_1 = this.build_trace(this.data_licenses['licenses_copyleft'], this.data_licenses['counts_copyleft'], 'copyleft', '#eb9b34', '#ffffff', this.labs)
+    var trace_2 = this.build_trace(this.data_licenses['licenses_sp'], this.data_licenses['counts_sp'], 'permissive', '#f5bb71', '#ffffff',  this.labs)
+    var trace_3 = this.build_trace(this.data_licenses['licenses_data'], this.data_licenses['counts_data'], 'data', '#438a3e','#ffffff', this.labs)
 
 
     Plotly.newPlot('plot_2', {
@@ -85,6 +75,8 @@ export default {
         x: x.map(function(a){return labs[a]}),
         y: y,
         name: name,
+        customdata:y.map((c)=>{return c=c/y.reduce((a, b) => a + b)*100}),
+        hovertemplate:"%{x} <br> %{y:,d} instances <br> %{customdata:.1f}% of OpenSource <extra></extra>",
         marker: {
           color: color,
           opacity: .9,

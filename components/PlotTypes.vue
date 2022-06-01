@@ -50,7 +50,8 @@ export default {
                 },
                 showlegend: false,
                 margin: {
-                    t:4
+                    autoexpand: true,
+                    t:0
                 }
             },
             config: {

@@ -42,8 +42,10 @@ export default {
                     title : 'Number of <br> instances'
                     },
                 showlegend: false,
+                autosize: true,
                 margin: {
-                    t:4
+                    autoexpand: true,
+                    t:0
                 }
             },
             config: {

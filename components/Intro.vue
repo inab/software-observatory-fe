@@ -1,8 +1,9 @@
 <template>
-<v-container fluid>
-    <v-row align="top">  
-        <v-col 
-        lg="6"
+<v-container>
+    <v-row align="top" justify="space-around">  
+        <v-col
+        xl="5" 
+        lg="5"
         md="6"
         sm="10"
         xs="10"
@@ -12,19 +13,21 @@
         </v-row>
         <v-row>
             <p class="intro-text text--secondary">
-            The tools observatory aims to monitor the technical quality of research software in the Life Sciences. 
-            This is achieved through a comprehensive collection of metadata from different sources, which along 
-            with additional computational means, allows the automatic generation of metrics.
+                The Software Observatory aims to be an instrument for the systematic observation and 
+                diagnosis of the quality of research software in the Life Sciences. 
+                <br>
+                The ultimate goal is promoting the adoption of software development best practices in the Life Sciences, to 
+                which the Software Observatory can  help detect needs 
+                and strategies to adopt at the individual and community levels.
+                This can  help detect needs and strategies to adopt at the individual and community levels.
             </p>
-            <p class="intro-text text--secondary">
-            This is achieved through a comprehensive collection of metadata from different sources, which along 
-            with additional computational means, allows the automatic generation of metrics.
-            </p>
+
         </v-row>
             
         </v-col>
 
         <v-col  
+        xl="7"
         lg="6"
         md="6"
         class="hidden-sm-and-down"
@@ -43,7 +46,7 @@
 
 .intro-text{
     font-family: Roboto, sans-serif;
-    font-size: .9em !important;
+    font-size: .85em !important;
     font-weight: 400;
 }
 

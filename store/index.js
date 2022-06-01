@@ -1,6 +1,19 @@
+
+import Vue from "vue";
+import Vuex from "vuex";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(Vuex);
+Vue.use(VueAxios, axios);
+
+Vue.axios.defaults.baseURL = "http://observatory.openebench.bsc.es/api/stats/";
+
 // almacenamiento central de vuex
 export const state = () => ({
-    _counter :0
+    _tab : 'Trends',
+    _sourcesCounts : {},
+    _totalCount: null
 });
 
 // Accesores o getters
@@ -8,10 +21,15 @@ export const state = () => ({
 // Normalmente se llaman desde las popriedades computed de los componentes
 
 export const getters = {
-    getCounter(state){
-        return state. _counter
+    getActiveTab(state){
+        return state._tab
+    },
+    Counts(state){
+        return state._sourcesCounts
+    },
+    Total(state){
+        return state._totalCount
     }
-
 }
 
 // Acciones - Metodos publicos
@@ -28,17 +46,43 @@ export const actions = {
         await dispatch('cards/loadCards');
     },
 
-    sumarDos(vuexContext) {
-        vuexContext.commit('increment');
-        vuexContext.commit('increment');
+    changeTab(vuexContext, payload){
+        vuexContext.commit('mutateTab', payload)
+    },
+
+    getCounts({commit}) {
+        var URL = 'tools/count_per_source'
+        Vue.axios.get(URL).then(result => {
+          commit('SAVE_COUNTS', result.data[0].data);
+        }).catch(error => {
+          throw new Error(`API ${error}`);
+        });
+      },
+
+    getTotalCount({commit}){
+        var URL = 'tools/count_total'
+        Vue.axios.get(URL).then(result => {
+          commit('SAVE_COUNT_TOTAL', result.data[0].data);
+        }).catch(error => {
+          throw new Error(`API ${error}`);
+        });
     }
+
 }
 // Mutadores
 // El 'unico fin de los mutadores es mutar o modificar state o almacenamiento
 // No deben ser llamadas desde los componentes
 
 export const mutations = {
-    increment(state){
-        state._counter++;
-    }
+    mutateTab(state, payload){
+        state._tab=payload.key;
+        console.log(state._tab)
+    },
+    SAVE_COUNTS(state, counts) {
+        state._sourcesCounts = counts;
+      },
+    SAVE_COUNT_TOTAL(state, count) {
+        console.log(count)
+        state._totalCount = count;
+      }
 }

@@ -22,10 +22,10 @@ export default {
             title: ''
         },
 
-        height:300,
+        height:350,
         autosize: true,
         margin: {
-          t:0,
+          t:40,
           b:0,
           l:0,
           r:0
@@ -48,17 +48,14 @@ export default {
         textinfo:"label",
         rotation: '152',
         marker: {
-          autocolorscale: true,
-          colorscale: [[0,'#992a22'], [0.333,'#d63b2f'],[0.666,'#f66257'], [1,'#fcc7c3']]
+          autocolorsacel: false,
+          colors: ['#ffffff', '#e0e0e0', '#273e6e', '#f5971b', '#faebbe', '#3a5ba1']
         },
         text: this.data_licenses.text,
         hovertemplate: '<b>%{label}</b><br>' +
                         '%{value:,d} instances<br>' +
                         '%{percentParent:.1%} of %{text}<extra></extra>'
     } 
-
-
-    console.log(trace)
 
     Plotly.newPlot('plot_1', {
       "data": [trace],

@@ -191,9 +191,12 @@ export default {
       },
       autosize: true,
       margin: {
+        autoexpand: true,
         t:0,
+        r:20,
+        l:0
       },
-      height: 600,
+      height: 550,
       showlegend: false,
       font_size:12,
       font_color : 'black',

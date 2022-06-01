@@ -1,7 +1,10 @@
 <template>
-       <v-tabs slider-size="1" right>
+       <v-tabs 
+       color="#0b579f" 
+       class="tabs" 
+       right>
       <v-tab>
-				<v-icon>mdi-chart-scatter-plot </v-icon>
+				<v-icon>mdi-chart-bar </v-icon>
 			</v-tab>
         <v-tab>
 				<v-icon>mdi-book-open-variant</v-icon>
@@ -10,12 +13,38 @@
         :transition="false"
         class="pt-2 pb-2 pr-2"
         >
-        <PlotLicensesBars />
+        <v-row 
+          align="center"
+          class="mt-0"
+          justify="space-around">
+              <v-col 
+              xl="12"
+              lg="12"
+              md="12"
+              sm="12"
+              cols="12"
+              class="mb-0 pb-0"
+              >
+                <PlotLicensesBars />
+              </v-col>
+              <v-col 
+                  xl="12"
+                  lg="12"
+                  md="12"
+                  sm="12"
+                  cols="12"
+                  align-self="start"
+                  >
+                    <p class="text--secondary mt-0 mb-2 ml-8 card-content caption"> 
+                      <span class="highlight">Distribution of main Open Source License families</span>                     
+                    </p>
+                </v-col>
+          </v-row>
         </v-tab-item>
       <v-tab-item 
-            :transition="false"
-            class="pt-2 pb-2 pr-5">
-             <LicensesTable />
+          :transition="false"
+          class="pt-2 pb-2 pr-5">  
+          <LicensesTable />
       </v-tab-item>
 
       </v-tabs>                        
@@ -36,4 +65,15 @@ export default {
 
 }
 
+div.v-tab{
+  min-width: 4em !important;
+  max-width: 7em !important;
+  margin-right: 1em;
+}
+
+div.v-tabs-slider-wrapper{
+  min-width: 4em !important;
+  max-width: 7em !important;
+  margin-right: 1em;
+}
 </style>
