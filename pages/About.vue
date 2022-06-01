@@ -19,7 +19,7 @@
                     color="#0b579f"
                     colored-border
                     dense
-                    class="mt-3 ml-0 mr-0 mb-2"
+                    class="mt-3 ml-0 mr-0 mb-0"
                     >
                     <h3 class="text-subtitle ml-4 mb-4">Terminology</h3>
                     <p class="ml-4 text--secondary card-content alert-content"> 
@@ -58,12 +58,28 @@
                 dense
                 class="mt-3 ml-0 mr-0 mb-2"
                 >
-                     <h3 class="text-subtitle ml-4 mb-4">Data Availability</h3>
+                     <h3 class="text-subtitle ml-4 mb-0">Data Availability</h3>
                     <p class="ml-4 text--secondary card-content alert-content"> 
-                    Data and statistics are made available throug the 
+                    Data and statistics are made available through the 
                     <a href="https://observatory.openebench.bsc.es/docs/api/">Software Observatory API</a>. 
                 </p>
                 </v-alert>
+
+                <v-alert
+                elevation="0"
+                icon="mdi-file-link-outline"
+                colored-border
+                dense
+                class="mt-3 ml-0 mr-0 mb-2"
+                >
+                 <h3 class="text-subtitle ml-4 mb-0">Citation</h3>
+                    <p class="ml-4 text--secondary card-content alert-content"> 
+                        <span class="citation-article mt-0">FAIRsoft - A practical implementation of FAIR principles for research software </span><br>
+                        Eva Martín del Pico, Josep Lluís Gelpí, Salvador Capella-Gutiérrez<br>
+                        bioRxiv 2022.05.04.490563; doi:<a href="https://doi.org/10.1101/2022.05.04.490563"> https://doi.org/10.1101/2022.05.04.490563</a>
+
+                    </p>
+                 </v-alert>
 
                 <v-alert
                 elevation="0"
@@ -72,7 +88,7 @@
                 dense
                 class="mt-3 ml-0 mr-0 mb-2"
                 >
-                 <h3 class="text-subtitle ml-4 mb-4">Terms of Use</h3>
+                 <h3 class="text-subtitle ml-4 mb-0">Terms of Use</h3>
                     <p class="ml-4 text--secondary card-content alert-content"> 
                     All data is distributed under a <a href="https://creativecommons.org/licenses/by-nd/2.0/">
                     CC-BY-ND</a> license.
@@ -91,6 +107,10 @@
 .highlight-info{
     color: #0b579f;
     font-weight: 600;
+}
+
+.citation-article{
+    font-size: 1rem !important;
 }
 
 </style>
