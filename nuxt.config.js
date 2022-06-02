@@ -77,14 +77,14 @@ export default {
 	},
 
   axios:{
-    baseURL: '/dev/',
+    baseURL: '/',
     proxy: true
   },
 
 
 
   router: {
-    base: '/dev/',
+    base: '/',
 		extendRoutes(routes, resolve) {
 			routes.push({
 				name: 'Trends',
