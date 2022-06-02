@@ -77,22 +77,19 @@ import {mapState} from "vuex";
           title: 'OpenEBench', flex : 3, label : 'OEB' 
         }
         },
-        mainCardCaption : "Number of instances on which metadata is being gathered accross sources.'Total' is the total number of sources in the Software Observatory's integrated collection."
+        mainCardCaption : "Number of instances on which metadata is being gathered across sources.'Total' is the total number of sources in the Software Observatory's integrated collection."
     }),
     computed: {
       cardsC(){
-        return this.$store.getters['Counts']
+        return this.$store.getters['data/Counts']
         },
       totalC(){
-        return  this.$store.getters['Total']
+        return  this.$store.getters['data/Total']
       }
       },
       created() {
-        this.$store.dispatch('getCounts')
-        this.$store.dispatch('getTotalCount')
-
-        this.cardsC = this.$store.getters['Counts']
-        this.totalC = this.$store.getters['Total']
+        this.$store.dispatch('data/getCounts')
+        this.$store.dispatch('data/getTotalCount')
         }
   }
 </script>

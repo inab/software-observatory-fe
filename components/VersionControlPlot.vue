@@ -8,7 +8,7 @@ import Plotly from '../assets/plotly-2.12.1.min.js'
 export default {
   data(){
     return {
-      data: {"github": 27804, "bitbucket": 787, "sourceforge": 7157, "gitlab": 322},
+      data: {"github": 12704, "bitbucket": 401, "sourceforge": 3997, "gitlab": 264},
       labels:{
           'gitlab':'<a href="https://gitlab.com/gitlab-org/gitlab", taget="blank_">GitLab    </a>',
           'bitbucket':'<a href="https://bitbucket.org/", taget="blank_">Bitbucket    </a>',

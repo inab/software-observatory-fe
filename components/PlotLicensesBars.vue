@@ -45,7 +45,7 @@ export default {
         height: 300,
         margin: {
           autoexpand: true,
-          b:50,
+          b:70,
           t:20,
           r:50
           }

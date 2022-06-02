@@ -25,7 +25,7 @@
               cols="12"
               class="mb-0 pb-0"
               >
-                <PlotLicensesBars />
+                <component :is="plotComponent"></component>
               </v-col>
               <v-col 
                   xl="12"
@@ -36,7 +36,7 @@
                   align-self="start"
                   >
                     <p class="text--secondary mt-0 mb-2 ml-8 card-content caption"> 
-                      <span class="highlight">Distribution of main Open Source License families</span>                     
+                      <span class="highlight">{{ caption }}</span>                     
                     </p>
                 </v-col>
           </v-row>
@@ -44,7 +44,7 @@
       <v-tab-item 
           :transition="false"
           class="pt-2 pb-2 pr-5">  
-          <LicensesTable />
+          <component :is="infoComponent"></component>
       </v-tab-item>
 
       </v-tabs>                        
@@ -55,6 +55,7 @@ export default {
       absolute: true,
       overlay: false,
     }),
+    props: ['plotComponent', 'infoComponent', 'caption' ]
   }
 </script>
 <style scoped>

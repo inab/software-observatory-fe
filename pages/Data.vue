@@ -57,11 +57,7 @@
                 elevation="2"
                 class="mt-4"
                 :class="{'plot-card': !small , 'plot-card-small': small}" >
-                    <v-row class="mb-0 pb-0">
-                        <v-col class="mt-6 mb-pd-0">
-                            <h3 class="text-subtitle mb-4 text-center">Consolidated Research Software (meta)data</h3>
-                        </v-col>
-                    </v-row>
+                <card-title text="Consolidated Research Software (meta)data"></card-title>
                     <v-row 
                     class="mt-0"
                     justify="center">
@@ -105,11 +101,7 @@
                 elevation="2"
                 class="pr-8"
                 :class="{'plot-card': !small , 'plot-card-small': small}">
-                    <v-row class="mb-0 pb-0">
-                        <v-col class="mt-6 mb-pd-0">
-                            <h3 class="text-subtitle mb-4 text-center">Instances Coverage</h3>
-                        </v-col>
-                    </v-row>
+                <card-title text="Instances Coverage"></card-title>
                     <v-row 
                     align="center"
                     class="mt-0"
@@ -154,11 +146,7 @@
                 elevation="2"
                 class="pr-5"
                 :class="{'plot-card': !small , 'plot-card-small': small}">
-                    <v-row class="mb-0 pb-0">
-                        <v-col class="mt-6 mb-pd-0">
-                            <h3 class="text-subtitle mb-4 text-center">(Meta)data Completeness</h3>
-                        </v-col>
-                    </v-row>
+                    <card-title text="(Meta)data Completeness"></card-title>
                       <v-row 
                         align="center"
                         class="mt-0"
@@ -206,11 +194,7 @@
                 elevation="2"
                 class="pr-5 pb-3"
                 :class="{'plot-card': !small , 'plot-card-small': small}">
-                    <v-row class="mb-0 pb-0">
-                        <v-col class="mt-6 mb-pd-0">
-                            <h3 class="text-subtitle mb-4 text-center">Types Of Software</h3>
-                        </v-col>
-                    </v-row>
+                    <card-title text="Types Of Software"></card-title>
                     <v-row 
                     align="center"
                     class="mt-0"
@@ -271,6 +255,7 @@
 </style>
 <script>
 export default ({
+    name:'Data',
     computed: {
         small(){
             return this.$vuetify.breakpoint.smAndDown

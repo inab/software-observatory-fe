@@ -5,7 +5,7 @@
             <v-col
             md="11"
             sm="11"
-            xs="11"
+            cols="11"
             lg="11"
             xl="11">
             <v-card
@@ -114,3 +114,8 @@
 }
 
 </style>
+<script>
+export default ({
+    name:'About'
+})
+</script>

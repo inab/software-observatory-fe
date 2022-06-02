@@ -3,30 +3,82 @@
     justify="center"
     >
         <v-col
-        md="11"
+        md="6"
         sm="11"
-        xs="11"
-        lg="11"
-        xl="11">
+        cols="11"
+        lg="6"
+        xl="6">
         <v-card
-        style="height: 60em"
         outlined
         elevation="1"
         class="pt-4 pl-6 pb-4">
-                <v-alert
-                border="right"
-                icon="mdi-hammer-wrench"
-                color="orange"
-                prominent
-                text
-                dense
-                class="mt-3 ml-4 mb-2"
-                style="width:60%"
-                >
-                <h3 class="text-subtitle ml-4 mb-4">FAIR evaluation</h3>
-                <p class="ml-4 text--secondary card-content alert-content"> 
-                </p>
-                </v-alert>      
+        <card-title text="Findability"></card-title>
+            <tabs-plot-info
+            class="pr-3"
+            plotComponent=""
+            infoComponent="FTable"
+            caption="">
+            </tabs-plot-info>
+        </v-card>
+        </v-col>
+
+        <v-col
+        md="6"
+        sm="11"
+        cols="11"
+        lg="6"
+        xl="6">
+        <v-card
+        outlined
+        elevation="1"
+        class="pt-4 pl-6 pb-4">
+        <card-title text="Accessibility"></card-title>
+          <tabs-plot-info
+          class="pr-3"
+          plotComponent=""
+          infoComponent="ATable"
+          caption="">
+          </tabs-plot-info>
+        </v-card>
+        </v-col>
+
+        <v-col
+        md="6"
+        sm="11"
+        cols="11"
+        lg="6"
+        xl="6">
+        <v-card
+        outlined
+        elevation="1"
+        class="pt-4 pl-6 pb-4">
+        <card-title text="Interoperability"></card-title>
+          <tabs-plot-info
+          class="pr-3"
+          plotComponent=""
+          infoComponent="ITable"
+          caption="">
+          </tabs-plot-info>
+        
+        </v-card>
+        </v-col>
+        <v-col
+        md="6"
+        sm="11"
+        cols="11"
+        lg="6"
+        xl="6">
+        <v-card
+        outlined
+        elevation="1"
+        class="pt-4 pl-6 pb-4">
+        <card-title text="(Re)Usability"></card-title>
+          <tabs-plot-info
+            class="pr-3"
+            plotComponent=""
+            infoComponent="RTable"
+            caption="">
+            </tabs-plot-info>
         </v-card>
         </v-col>
 </v-row>

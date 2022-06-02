@@ -6,7 +6,7 @@
         <h3 class="text-subtitle mb-4 mt-6 text-center">Versioning</h3>
             <p class="text--secondary mb-6 text-center card-content">
                 Following a specific set of rules for naming software releases allows its inequivocal identification, 
-                which enables its <span class="highlight">Reusability</span> and guarantees the 
+                which increases its <span class="highlight">Findability</span>, <span class="highlight">Reusability</span> and guarantees the 
                 <span class="highlight">Reproducibility</span> of research results.
             </p>
         <div  id="plot_3"></div>

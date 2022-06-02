@@ -67,8 +67,41 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+		extend(config) {
+			config.module.rules.push({
+				test: /\.md$/,
+				loader: 'raw-loader',
+			});
+		},
+	},
+
   axios:{
-    // proxy: true
-  }
+    baseURL: '/dev/',
+    proxy: true
+  },
+
+
+
+  router: {
+    base: '/dev/',
+		extendRoutes(routes, resolve) {
+			routes.push({
+				name: 'Trends',
+				path: '/',
+				component: resolve(__dirname, 'pages/index.vue'),
+			});
+			routes.push({
+				name: 'Data',
+				path: '/Data',
+				component: resolve(__dirname, 'pages/Data'),
+			});
+			routes.push({
+				name: 'About',
+				path: '/About',
+				component: resolve(__dirname, 'pages/About'),
+			});
+		},
+	},
+
 }
