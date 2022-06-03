@@ -76,12 +76,7 @@ export default {
 		},
 	},
 
-  axios:{
-    baseURL: '/'
-  },
-
-
-
+ 
   router: {
 		extendRoutes(routes, resolve) {
 			routes.push({

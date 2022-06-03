@@ -1,7 +1,7 @@
 <template>
     <tabs-plot-info
     class="pr-3"
-    plotComponent=""
+    plotComponent="FindabilityPlot"
     infoComponent="FTable"
     caption="">
     </tabs-plot-info>
