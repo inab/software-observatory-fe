@@ -14,12 +14,13 @@
         <v-row>
             <p class="intro-text text--secondary">
                 The Software Observatory aims to be an instrument for the systematic observation and 
-                diagnosis of the quality of research software in the Life Sciences. 
+                diagnosis of the quality of research  software in the Life Sciences. 
                 <br>
-                The ultimate goal is promoting the adoption of software development best practices in the Life Sciences, to 
-                which the Software Observatory can  help detect needs 
-                and strategies to adopt at the individual and community levels.
-                This can  help detect needs and strategies to adopt at the individual and community levels.
+                The ultimate goal is to promote the adoption of software development best practices 
+                in the Life Sciences, to which the Software Observatory can contribute through the 
+                identification of trends in the way research software is being developed. Indeed these trends 
+                can help detect needs and strategies to adopt at the individual and community levels.
+
             </p>
 
         </v-row>
