@@ -52,6 +52,5 @@ export const actions = {
 export const mutations = {
     mutateTab(state, payload){
         state._tab=payload.key;
-        console.log(state._tab)
     },
 }

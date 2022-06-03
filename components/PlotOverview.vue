@@ -140,7 +140,7 @@ export default {
       'source' : this.fps['sources'],
       'values' : this.features_names.map(this.map_feat_names)
       }
-    console.log(scatter_data)
+    
     var data = this.build_scatter_traces(scatter_data)
 
     var bars_data = this.bar_plot_data_restruct(this.features)
@@ -252,7 +252,7 @@ export default {
         }
         scatter_plot.push(trace)
         }
-      console.log(scatter_plot)
+      
       return scatter_plot     
       },
     bar_plot_data_restruct(features){
@@ -263,7 +263,6 @@ export default {
       return new_values 
     },
     fill_scatter_labels(values, index){
-      console.log(values)
       var labels = values.map(x => (x != 0 ?  this.feat_labels[this.features_names[index]] : 0))
       return labels
 

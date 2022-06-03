@@ -103,7 +103,7 @@ export default {
         }
 
         data.push(line_data)
-        console.log(data)
+        
         Plotly.newPlot('plot_21', /* JSON object */ {
             "data": data,
             "layout": this.layout,
@@ -113,14 +113,11 @@ export default {
     computed:{
         layout(){
             var l = this.layout_base
-            console.log(this.small)
             if(this.small){
                 l["legend"] = {orientation: "h", y:5, x:-0.2, size: 15}
-                console.log('small')
                 return l
             }else{
                 l["legend"] = {}
-                console.log('big')
                 return l
 
             }
