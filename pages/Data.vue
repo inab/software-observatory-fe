@@ -37,10 +37,10 @@
                     Life Sciences Research Software metadata is extracted from different sources 
                     and then harmonized and integrated to generate a comprehensive
                     collection of Research Software metadata. 
-                    <HoverIconLink
+                    <!--HoverIconLink
                     path="/about"
                     icon="mdi-information-outline"
-                    text="learn more"/>
+                    text="learn more"/-->
  
                 </p>
             </v-alert>

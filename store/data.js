@@ -1,7 +1,8 @@
 //state
 export const state = () => ({
     _sourcesCounts : {},
-    _totalCount: null
+    _totalCount: null,
+    _FAIRscores: {}
 })
 
 
@@ -12,6 +13,9 @@ export const getters = {
     },
     Total(state){
         return state._totalCount
+    },
+    FAIRscores(state){
+        return state._FAIRscores
     }
 }
 
@@ -27,6 +31,12 @@ export const actions = {
         var URL = 'https://observatory.openebench.bsc.es/api/stats/tools/count_total';
         let Total = await this.$axios.get(URL);
         commit('SAVE_COUNT_TOTAL', Total.data[0].data);      
+        },
+
+    async getFAIRscores({commit}){
+        var URL = 'https://observatory.openebench.bsc.es/api/stats/tools/fair_scores';
+        let Scores = await this.$axios.get(URL);
+        commit('SAVE_FAIR_SCORES', Scores.data[0].data);      
         }
 }
 
@@ -38,5 +48,8 @@ export const mutations = {
       },
     SAVE_COUNT_TOTAL(state, count) {
         state._totalCount = count;
+      },
+    SAVE_FAIR_SCORES(state, scores) {
+        state._FAIRscores = scores;
       }
 }

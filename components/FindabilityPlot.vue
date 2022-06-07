@@ -1,183 +1,117 @@
 <template>
-    <div id="myDiv"></div>
-  
+    <div>
+        <div id="myDiv">
+    </div>
+    </div>
 </template>
 <script>
+import Plotly from '../assets/plotly-2.12.1.min.js'
+
 export default {
     data() {
         return {
-            data: {
-                "F1_1": true, 
-                "F1_2": false, 
-                "F2_1": true, 
-                "F2_2": true, 
-                "F3_1": true, 
-                "F3_2": false, 
-                "F3_3": true},
-                metrics_ids : ['F1_1', 'F1_2', 'F2_1', 'F2_2', 'F3_1', 'F3_2', 'F3_3']
+            labels : {
+                'F3':'F3.<br> Searchability',
+                'F2':'F2.<br> Existence <br> of Metadata',
+                'F1':'F1.<br> Identity <br> uniqueness'},
+
+            annots: {
+                'F1':{'0': 0.423, '0.85':0.577},
+                'F2':{'0.297, 0.629,0.74},
+                'F3':{0.106, 0.423, 0.266, 0.204},
+            },
+
+            config : {
+                responsive: true,
+                displayModeBar: false}
         }
     },
-    mounted(){
-        var trace1 = {
-            text: "sample length: 32",
-            hoveron: "points+kde",
-            meanline: {
-                visible: true
-            },
-            legendgroup: "F",
-            scalegroup: "F",
-            points: "all",
-            pointpos: 1,
-            box: {
-                visible: true
-            },
-            jitter: 0,
-            scalemode: "count",
-            marker: {
-                line: {
-                    width: 2,
-                    color: "#bebada"
-                },
-                symbol: "line-ns"
-            },
-            showlegend: false,
-            side: "positive",
-            type: "violin",
-            name: "F",
-            span: [
-                0
-            ],
-            line: {
-                color: "#bebada"
-            },
-            y0: "Thursday",
-            x: [
-                10.07,
-                34.83,
-                10.65,
-                12.43,
-                24.08,
-                13.42,
-                12.48,
-                29.8,
-                14.52,
-                11.38,
-                20.27,
-                11.17,
-                12.26,
-                18.26,
-                8.51,
-                10.33,
-                14.15,
-                13.16,
-                17.47,
-                27.05,
-                16.43,
-                8.35,
-                18.64,
-                11.87,
-                19.81,
-                43.11,
-                13.0,
-                12.74,
-                13.0,
-                16.4,
-                16.47,
-                18.78
-            ],
-            orientation: "h"
+    computed: {
+      FAIRscores(){
+        return this.$store.getters['data/FAIRscores']
         }
-
-
-        var trace2 = {
-            text: "sample length: 30",
-            hoveron: "points+kde",
-            meanline: {
-                visible: true
-            },
-            legendgroup: "M",
-            scalegroup: "M",
-            points: "all",
-            pointpos: -0.6,
-            box: {
-                visible: true
-            },
-            jitter: 0,
-            scalemode: "count",
-            marker: {
-                line: {
-                    width: 2,
-                    color: "#8dd3c7"
-                },
-                symbol: "line-ns"
-            },
-            showlegend: false,
-            side: "negative",
-            type: "violin",
-            name: "M",
-            span: [
-                0
-            ],
-            line: {
-                color: "#8dd3c7"
-            },
-            y0: "Thursday",
-            x: [
-                27.2,
-                22.76,
-                17.29,
-                19.44,
-                16.66,
-                32.68,
-                15.98,
-                13.03,
-                18.28,
-                24.71,
-                21.16,
-                11.69,
-                14.26,
-                15.95,
-                8.52,
-                22.82,
-                19.08,
-                16.0,
-                34.3,
-                41.19,
-                9.78,
-                7.51,
-                28.44,
-                15.48,
-                16.58,
-                7.56,
-                10.34,
-                13.51,
-                18.71,
-                20.53
-            ],
-            orientation: "h"
-        }
-
-        var data = [trace1,trace2,trace3,trace4,trace5,trace6,trace7]
-
+      },
+      created() {
+        this.$store.dispatch('data/getFAIRscores')
+        },
+    mounted(){        
+        var traces = this.build_traces()
         var layout = {
             hovermode: "closest",
-            width: 400,
+            autosize: true,
             yaxis: {
                 showgrid: true
             },
-            title: "Total bill distribution<br><i>scaled by number of bills per gender",
+            title: "",
             legend: {
                 tracegroupgap: 0
+            },
+            margin:{
+                autoexpand: true,
+                t:10,
+                l:150
             },
             violingap: 0,
             violingroupgap: 0,
             violinmode: "overlay",
-            height: 700
+            height: 350
         }
 
-    Plotly.newPlot("myDiv", data, layout)
+        Plotly.newPlot("myDiv", {
+             "data": traces, 
+             "layout":layout, 
+             "config": this.config})
 
 
+    },
+    methods: {
+        build_traces(){
+            var traces =[]
+            console.log(this.FAIRscores)
+            for (var [key, value] of Object.entries(this.FAIRscores['F'])){
+                var trace = {
+                    hoveron: "points+kde+violins+text",
+                    meta:this.annots[key],
+                    hovertemplate: "%{meta[x]}",
+                    meanline: {
+                        visible: true
+                    },
+                    legendgroup: "score",
+                    scalegroup: "score",
+                    points: "all",
+                    pointpos: 1,
+                    box: {
+                        visible: false
+                    },
+                    jitter: 0,
+                    scalemode: "count",
+                    marker: {
+                        line: {
+                            width: 2,
+                            color: "#f5a142"
+                        },
+                        symbol: "line-ns"
+                    },
+                    showlegend: false,
+                    side: "positive",
+                    type: "violin",
+                    name: "score",
+                    span: [
+                        0
+                    ],
+                    line: {
+                        color: "#bebada"
+                    },
+                    y0: this.labels[key],
+                    x: value,
+                    orientation: "h"
+                }
+
+                traces.push(trace)
+            }
+            return(traces)
+
+        }
     }
 }
 </script>

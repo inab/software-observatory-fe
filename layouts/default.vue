@@ -96,6 +96,7 @@ export default {
       data: () => ({
      sections: [
        {'label':'Trends', 'path':'/', 'icon': 'mdi-chart-line', 'hover':'Trends'},
+       {'label':'FAIRness', 'path':'/FAIRness', 'icon': 'mdi-bullseye', 'hover':'Data'},
        {'label':'Data', 'path':'/Data', 'icon': 'mdi-database', 'hover':'Data'},
        {'label':'About', 'path':'/About', 'icon': 'mdi-lightbulb-outline', 'hover':'About'}
      ],

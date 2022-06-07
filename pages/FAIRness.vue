@@ -15,7 +15,7 @@
         <card-title text="Findability"></card-title>
             <tabs-plot-info
             class="pr-3"
-            plotComponent=""
+            plotComponent="FindabilityPlot"
             infoComponent="FTable"
             caption="">
             </tabs-plot-info>
@@ -35,7 +35,7 @@
         <card-title text="Accessibility"></card-title>
           <tabs-plot-info
           class="pr-3"
-          plotComponent=""
+          plotComponent="AccessibilityPlot"
           infoComponent="ATable"
           caption="">
           </tabs-plot-info>
@@ -55,7 +55,7 @@
         <card-title text="Interoperability"></card-title>
           <tabs-plot-info
           class="pr-3"
-          plotComponent=""
+          plotComponent="InteroperabilityPlot"
           infoComponent="ITable"
           caption="">
           </tabs-plot-info>
@@ -75,7 +75,7 @@
         <card-title text="(Re)Usability"></card-title>
           <tabs-plot-info
             class="pr-3"
-            plotComponent=""
+            plotComponent="ReusabilityPlot"
             infoComponent="RTable"
             caption="">
             </tabs-plot-info>
@@ -83,3 +83,13 @@
         </v-col>
 </v-row>
 </template>
+<script>
+
+export default{
+  created() {
+    this.$store.dispatch('data/getFAIRscores')
+    }
+  }
+
+</script>
+
