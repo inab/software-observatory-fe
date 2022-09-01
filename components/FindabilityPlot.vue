@@ -16,9 +16,15 @@ export default {
                 'F1':'F1.<br> Identity <br> uniqueness'},
 
             annots: {
-                'F1':{'0': 0.423, '0.85':0.577},
-                'F2':{'0.297, 0.629,0.74},
-                'F3':{0.106, 0.423, 0.266, 0.204},
+                'F3': {0.0: '4684', 0.7: '8985', 0.85: '18606', 1.0: '11712'}, 
+                'F2': {0.0: '3275', 0.6: '13057', 1.0: '27655'}, 
+                'F1': {0.8: '25397', 1.0: '18590'}
+            },
+
+            annots_2: {
+                'F3': ['4684', '8985', '18606', '11712'], 
+                'F2': ['3275', '13057','27655'], 
+                'F1': ['25397', '18590']
             },
 
             config : {
@@ -67,12 +73,16 @@ export default {
     methods: {
         build_traces(){
             var traces =[]
+            var annots = {
+                       'F3.<br> Searchability': ['4684', '8985', '18606', '11712'], 
+                        'F2.<br> Existence <br> of Metadata': ['3275', '13057','27655'], 
+                        'F1.<br> Identity <br> uniqueness': ['25397', '18590']
+                    }
             console.log(this.FAIRscores)
             for (var [key, value] of Object.entries(this.FAIRscores['F'])){
+
                 var trace = {
-                    hoveron: "points+kde+violins+text",
-                    meta:this.annots[key],
-                    hovertemplate: "%{meta[x]}",
+ 
                     meanline: {
                         visible: true
                     },
@@ -103,10 +113,10 @@ export default {
                         color: "#bebada"
                     },
                     y0: this.labels[key],
+                    ids: annots[key],
                     x: value,
                     orientation: "h"
                 }
-
                 traces.push(trace)
             }
             return(traces)

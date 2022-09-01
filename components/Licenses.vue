@@ -24,7 +24,12 @@
             xs="12"
             class="pt-0"
             >
-                <PlotLicensesPie />
+            <v-skeleton-loader
+                v-if="$store.state.trends._unLoaded.licensesSunburst"
+                class="mb-5 ml-10 mr-10"
+                type="card-avatar"
+                />
+                <PlotLicensesPie v-else />
             </v-col>
             <v-col 
             style="position: relative ml-10"
@@ -33,7 +38,14 @@
             sm="12"
             xs="12"
             cols="12">
-                <tabs-plot-info 
+            <v-skeleton-loader
+                v-if="$store.state.trends._unLoaded.licensesOpenSource"
+                class="mb-5 ml-10 mr-10"
+                type="actions, card-avatar, list-item"
+		        />
+
+                <tabs-plot-info
+                v-else
                 plotComponent="PlotLicensesBars" 
                 infoComponent="LicensesTable" 
                 caption="Distribution of main Open Source License families">

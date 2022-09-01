@@ -4,9 +4,8 @@
     <v-row 
       justify="center"
       >
-			<v-col 
+      <v-col 
       class="ml-6 mb-8"
-      align="left" 
       sm="12"
       md="9" 
       lg="8"
@@ -47,7 +46,6 @@
     </v-row>
     </v-container>
   </v-container>
-
   </v-app>
 </template>
 <style>
@@ -92,27 +90,29 @@ p{
 <script>
 
 export default {
-  name: 'DefaultLayout',
-      data: () => ({
-     sections: [
-       {'label':'Trends', 'path':'/', 'icon': 'mdi-chart-line', 'hover':'Trends'},
-       {'label':'FAIRness', 'path':'/FAIRness', 'icon': 'mdi-bullseye', 'hover':'Data'},
-       {'label':'Data', 'path':'/Data', 'icon': 'mdi-database', 'hover':'Data'},
-       {'label':'About', 'path':'/About', 'icon': 'mdi-lightbulb-outline', 'hover':'About'}
-     ],
-     bigDis:true
-    }),
-  computed: {
-      vertical() {
+    data(){
+        return {
+            sections: [
+            {'label':'Trends', 'path':'/', 'icon': 'mdi-chart-line', 'hover':'Trends'},
+            {'label':'FAIRness', 'path':'/FAIRness', 'icon': 'mdi-bullseye', 'hover':'FAIRness'},
+            {'label':'Data', 'path':'/Data', 'icon': 'mdi-database', 'hover':'Data'},
+            {'label':'About', 'path':'/About', 'icon': 'mdi-lightbulb-outline', 'hover':'About'}
+            ],
+        bigDis:true
+        }
+    },
+    computed: {
+        vertical() {
 			return this.$vuetify.breakpoint.mdAndUp;
 		},
-      tab() {
-          return this.$store.getters['getActiveTab']
-      },
-      columnNeeded(){
-        console.log(!this.$vuetify.breakpoint.lgAndUp)
-        return this.$vuetify.breakpoint.lgAndUp;
-      }
+        tab() {
+            return this.$store.getters['getActiveTab']
+        },
+        columnNeeded(){
+            console.log(!this.$vuetify.breakpoint.lgAndUp)
+            return this.$vuetify.breakpoint.lgAndUp;
+        }
     }
-}
+} 
+
 </script>

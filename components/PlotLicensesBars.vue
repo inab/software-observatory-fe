@@ -1,26 +1,14 @@
-<template>  
+<template>
     <div id="plot_2"></div>
 </template>
 
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex';
 
 export default {
   data(){
     return {
-      lc: {"BSD": 785, "GPL": 6691, "MIT": 3686, "artistic": 1570, "LGPL": 649, "apache": 980, "CC": 341, "AGPL": 224, "CeCILL": 31, "AFL": 22},
-      data_licenses: {       
-          "license": ["BSD", "GPL", "MIT", "Artistic", "LGPL", "Apache", "other OS"],
-          "licenses_copyleft" : ['Artistic', 
-                                  "MIT", 
-                                  "Apache", 
-                                  "BSD"],
-          "counts_copyleft": [1570, 3686, 980, 785],
-          "licenses_sp":["GPL", "AGPL", "LGPL", "CeCILL-C"],
-          "counts_sp":[6691, 224, 649, 31],
-          "licenses_data":['CC'],
-          "counts_data":[341]
-        },
       labs: {
         'Artistic': '<a href="https://opensource.org/licenses/artistic-license">Artistic</a>',
         'MIT':'<a href="https://opensource.org/licenses/MIT">MIT</a>',
@@ -56,26 +44,52 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters( 'trends', {
+      data_licenses : 'LicensesOpenSource'
+    }),
+
+    trace_1(){
+      var trace_1 = this.build_trace('licenses_copyleft', 'counts_copyleft', 'copyleft', '#eb9b34', '#ffffff', this.labs)
+      return trace_1
+    },
+
+    trace_2(){
+      var trace_2 = this.build_trace('licenses_permissive', 'counts_permissive', 'permissive', '#ffc400', '#ffffff', this.labs)
+      return trace_2
+    },
+
+    trace_3(){
+      var trace_3 = this.build_trace('licenses_data', 'counts_data', 'data', '#438a3e', '#ffffff', this.labs)
+      return trace_3
+    }
+
+  },
+
   mounted() {
-     var trace_1 = this.build_trace(this.data_licenses['licenses_copyleft'], this.data_licenses['counts_copyleft'], 'copyleft', '#eb9b34', '#ffffff', this.labs)
-    var trace_2 = this.build_trace(this.data_licenses['licenses_sp'], this.data_licenses['counts_sp'], 'permissive', '#f5bb71', '#ffffff',  this.labs)
-    var trace_3 = this.build_trace(this.data_licenses['licenses_data'], this.data_licenses['counts_data'], 'data', '#438a3e','#ffffff', this.labs)
-
-
-    Plotly.newPlot('plot_2', {
-      "data": [trace_1, trace_2, trace_3],
-      "layout": this.layout,
-      "config": this.config
-        })
+    if (this.$store.state.trends._licensesOpenSource.licenses_copyleft.length > 0) {
+        var trace_1 = this.trace_1
+        var trace_2 = this.trace_2
+        var trace_3 = this.trace_3
+        Plotly.newPlot('plot_2', {
+        "data": [trace_1, trace_2, trace_3],
+        "layout": this.layout,
+        "config": this.config
+          })
+    }
+      
     },
   methods: {
     build_trace(x, y, name, color, border, labs){
+      console.log(x)
+      var X = this.data_licenses[x]
+      var Y = this.data_licenses[y]
       var trace = {
         type: "bar",
-        x: x.map(function(a){return labs[a]}),
-        y: y,
+        x: X.map(function(a){return labs[a]}),
+        y: Y,
         name: name,
-        customdata:y.map((c)=>{return c=c/y.reduce((a, b) => a + b)*100}),
+        customdata:Y.map((c)=>{return c=c/Y.reduce((a, b) => a + b)*100}),
         hovertemplate:"%{x} <br> %{y:,d} instances <br> %{customdata:.1f}% of OpenSource <extra></extra>",
         marker: {
           color: color,

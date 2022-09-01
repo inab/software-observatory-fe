@@ -4,11 +4,11 @@
 
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex';
 
 export default {
   data(){
     return {
-      data: {"github": 12704, "bitbucket": 401, "sourceforge": 3997, "gitlab": 264},
       labels:{
           'gitlab':'<a href="https://gitlab.com/gitlab-org/gitlab", taget="blank_">GitLab    </a>',
           'bitbucket':'<a href="https://bitbucket.org/", taget="blank_">Bitbucket    </a>',
@@ -38,15 +38,21 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters({
+      data_vc : 'trends/VersionControlRepositories'
+    })
+
+    },
   mounted() {
-    var trace = this.build_trace(this.data, this.labels)
+    var trace = this.build_trace(this.data_vc, this.labels)
     Plotly.newPlot('plot_4', {
       "data": [trace],
       "layout": this.layout,
       "config": this.config
         })
     },
-      methods: {
+  methods: {
     build_trace(data, labs){
         var x = []
         var y = []

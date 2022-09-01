@@ -68,7 +68,7 @@
                         sm="12"
                         cols="12"
                          >
-                            <PlotOverview />
+                            <PlotOverview />    
                         </v-col>
                         <v-col
                         xl="3"
@@ -256,6 +256,10 @@
 <script>
 export default ({
     name:'Data',
+    created() {
+        this.$store.dispatch('data/getCountsPerSource');
+        this.$store.dispatch('data/getTotalCount');
+    },
     computed: {
         small(){
             return this.$vuetify.breakpoint.smAndDown

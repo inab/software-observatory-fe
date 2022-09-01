@@ -1,4 +1,4 @@
-# observatory-fe
+# Software Observatory Front-End
 
 ## Build Setup
 

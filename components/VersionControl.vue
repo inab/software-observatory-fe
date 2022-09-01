@@ -14,15 +14,26 @@
                 <span class="highlight">Reused.</span></p>
         </v-col>
         <v-col cols="5" align-self="center">
-          <v-card class="mt-2 mr-2 number-card" color="#f5971b" elevation="0">
-            <v-card-text class="text-center number">28%</v-card-text>
-            <v-card-text  class="text-center number-text">of instances use <span class="number-highlight">version control</span></v-card-text>
-          </v-card>
+            <v-skeleton-loader
+                v-if="$store.state.trends._unLoaded.versionControlCount"
+                class="pt-10 pr-4 pl-4 pb-10 number-card-loader"
+                type="image"
+                />
+            <v-card v-else class="mt-2 mr-2 number-card" color="#f5971b" elevation="0">
+                <v-card-text class="text-center number">{{ percentage.toFixed(1) }}% </v-card-text>
+                <v-card-text  class="text-center number-text">of instances use <span class="number-highlight">version control</span></v-card-text>
+           </v-card>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col cols="10">
-            <VersionControlPlot />
+            <v-skeleton-loader
+                v-if="$store.state.trends._unLoaded.versionControlRepositories"
+                class="mb-5 ml-10 mr-10"
+                type="card-avatar"
+                />
+            
+            <VersionControlPlot v-else/>
         </v-col>
         <v-col 
           xl="10"
@@ -44,6 +55,10 @@
 .v-card{
     margin: auto;
     padding: auto;
+}
+
+.number-card-loader{
+    height: 9em;
 }
 
 .number-card{
@@ -90,3 +105,24 @@
     margin: auto;
 }
 </style>
+<script>
+  import { mapGetters } from 'vuex';
+
+  export default {
+
+  computed: {
+    ...mapGetters({
+      control_counts: 'trends/VersionControlCount'
+    }),
+
+    percentage() {
+      var total = this.control_counts['version control'] + this.control_counts['no version control'];
+      var percentage = this.control_counts['version control'] / total * 100;
+      return percentage;
+    }
+  },
+  created() {
+    this.$store.dispatch( 'trends/getVersionControlCount')
+    }
+  }
+</script>

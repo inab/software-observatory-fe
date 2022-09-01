@@ -1,19 +1,40 @@
 <template>
     <v-container >
-      <v-row
-      justify="space-around"
-      align="center">
-        <v-col
-          v-for="card in cardsC"
-          :key="cards_info[card.source].title"
-        >
-        <div class="source-card"> <!-- Necessary to center cards in columns-->
-          <SourceCard 
-            :title="cards_info[card.source].title" 
-            :count="card.count" 
-            :label="cards_info[card.source].label"/>
-        </div>
-        </v-col>
+            <div v-if="$store.state.data._unLoaded.countsPerSource">
+                <v-row
+                    justify="space-around"
+                    align="center">
+                <v-col
+                 v-for="card in 8"
+                >
+                    <div class="source-card">
+                        <v-skeleton-loader
+                            class="loading-card"
+                            type="card-heading"
+                            />
+                    </div>
+                </v-col>
+                </v-row>
+            </div>
+           <div v-else>
+            <v-row
+                    justify="space-around"
+                    align="center">
+            <v-col
+                v-for="card in cardsC"
+                :key="cards_info[card.source].title"
+                >
+                <div class="source-card"> <!-- Necessary to center cards in columns-->
+                <SourceCard 
+                    :title="cards_info[card.source].title" 
+                    :count="card.count" 
+                    :label="cards_info[card.source].label"/>
+                </div>
+            </v-col>
+            </v-row>
+
+           </div>
+            
       </v-row>
       <div style="position:relative">
         <div 
@@ -44,7 +65,8 @@
 
 
 <script>
-import {mapState} from "vuex";
+import { mapGetters } from 'vuex';
+
 
   export default {
     data: () => ({
@@ -80,17 +102,11 @@ import {mapState} from "vuex";
         mainCardCaption : "Number of instances on which metadata is being gathered across sources.'Total' is the total number of sources in the Software Observatory's integrated collection."
     }),
     computed: {
-      cardsC(){
-        return this.$store.getters['data/Counts']
-        },
-      totalC(){
-        return  this.$store.getters['data/Total']
+      ...mapGetters('data',{
+        cardsC: 'CountsPerSource',
+        totalC: 'TotalCount'
+      })
       }
-      },
-      created() {
-        this.$store.dispatch('data/getCounts')
-        this.$store.dispatch('data/getTotalCount')
-        }
   }
 </script>
 
@@ -114,5 +130,12 @@ import {mapState} from "vuex";
   padding: auto;
   width: 90%;
   width: 13em;
+}
+
+.loading-card{
+    min-height: 4.5rem;
+    width: 100%;
+    min-width:8em;
+    display: inline-block;
 }
 </style>
