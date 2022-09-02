@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <v-row>
             <CollectionSelector />
         </v-row>
