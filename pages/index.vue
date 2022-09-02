@@ -1,5 +1,8 @@
 <template>
     <div>
+        <v-row>
+            <CollectionSelector />
+        </v-row>
         <v-row 
         justify="center">
             <v-col
@@ -33,15 +36,16 @@
     </div>
 </template>
 <script>
+import CollectionSelector from '~/components/CollectionSelector.vue';
 export default {
-    name: 'Trends',
+    name: "Trends",
     created() {
-        this.$store.dispatch('trends/getLicensesSunburst');
-        this.$store.dispatch('trends/getLicensesOpenSource');
-        this.$store.dispatch('trends/getSemanticVersioning');
-        this.$store.dispatch('trends/getVersionControlCount');
-        this.$store.dispatch('trends/getVersionControlRepositories');
-	},
-
+        this.$store.dispatch("trends/getLicensesSunburst");
+        this.$store.dispatch("trends/getLicensesOpenSource");
+        this.$store.dispatch("trends/getSemanticVersioning");
+        this.$store.dispatch("trends/getVersionControlCount");
+        this.$store.dispatch("trends/getVersionControlRepositories");
+    },
+    components: { CollectionSelector }
 }
 </script>

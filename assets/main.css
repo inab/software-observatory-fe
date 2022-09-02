@@ -31,6 +31,15 @@ h2 {
     color:#000000de;
 }
 
+h6 {
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem !important;
+    line-height: 2.5rem;
+    color:#000000de; 
+
+}
+
+
 p{
     font-family: Roboto, sans-serif;
     font-size: .8em !important;
@@ -43,6 +52,7 @@ p{
   font-weight: 300;
   font-size: 1.4em;
 }
+
 
 .alert-text{
   font-size: .75em;
