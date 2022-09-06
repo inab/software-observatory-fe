@@ -49,7 +49,7 @@ export const getters = {
 }
 
 //Actions
-var BASE_URL =  this.$config.baseUrl + '/stats/tools/'
+var BASE_URL =  'http://127.25.0.2:3500' + '/stats/tools/'
 
 export const actions = {
     async getCurrentCollection({commit}, collection){
