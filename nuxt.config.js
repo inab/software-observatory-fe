@@ -95,6 +95,10 @@ export default {
 				component: resolve(__dirname, 'pages/About'),
 			});
 		},
-	}
+	},
+
+  publicRuntimeConfig: {
+    observatoryApiUrl: process.env.OBSERVATORY_API_BASE_URL,
+  },
 
 }

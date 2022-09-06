@@ -49,7 +49,7 @@ export const getters = {
 }
 
 //Actions
-var BASE_URL = 'http://127.0.0.1:3000/stats/tools/'
+var BASE_URL =  this.$config.observatoryApiUrl + '/stats/tools/'
 
 export const actions = {
     async getCurrentCollection({commit}, collection){
