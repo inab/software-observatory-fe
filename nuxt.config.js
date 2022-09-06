@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 module.exports = {
   publicRuntimeConfig: {
       // Will be available on both server and client
-      baseUrl: 'http://api:3500',
+      baseUrl: 'http://127.25.0.2:3500',
   }
 }
 
