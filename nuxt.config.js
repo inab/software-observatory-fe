@@ -1,4 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
+module.exports = {
+  publicRuntimeConfig: {
+      // Will be available on both server and client
+      baseUrl: 'http://api:3500',
+  }
+}
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -95,10 +101,6 @@ export default {
 				component: resolve(__dirname, 'pages/About'),
 			});
 		},
-	},
-
-  publicRuntimeConfig: {
-    observatoryApiUrl: process.env.OBSERVATORY_API_BASE_URL,
-  },
+	}
 
 }

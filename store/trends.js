@@ -49,7 +49,7 @@ export const getters = {
 }
 
 //Actions
-var BASE_URL =  this.$config.observatoryApiUrl + '/stats/tools/'
+var BASE_URL =  this.$config.baseUrl + '/stats/tools/'
 
 export const actions = {
     async getCurrentCollection({commit}, collection){
