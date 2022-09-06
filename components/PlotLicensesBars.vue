@@ -18,6 +18,7 @@ export default {
         "AGPL":'<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL</a>',
         "LGPL":'<a href="https://www.gnu.org/licenses/lgpl-3.0.html">LGPL</a>',
         "CeCILL-C":'<a href="https://spdx.org/licenses/CECILL-C.html">CeCILL-C</a>',
+        "CeCILL":'<a href="https://spdx.org/licenses/CECILL-C.html">CeCILL-C</a>',
         'CC':'<a href="https://creativecommons.org/licenses/">CC</a>'
       },
       layout: {
