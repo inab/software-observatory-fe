@@ -95,6 +95,6 @@ export default {
 				component: resolve(__dirname, 'pages/About'),
 			});
 		},
-	},
+	}
 
 }

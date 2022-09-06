@@ -8,3 +8,13 @@ Vuex Store option is implemented in the Nuxt.js framework.
 Creating a file in this directory automatically activates the option in the framework.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/vuex-store).
+
+## Docker 
+Build image: 
+```
+docker build -t observatory-fe .
+```
+Run:
+```
+docker run -p 8500:80 --name observatory-fe-docker observatory-fe
+```
