@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="myDiv">
+        <div :id="id">
     </div>
     </div>
 </template>
@@ -17,10 +17,10 @@ export default {
             type: Object,
             required: true
         },
-        title: {
+        id: {
             type: String,
             required: true
-        },
+        }
     },
     data() {
         return {         
@@ -31,19 +31,9 @@ export default {
             colors_lines: ['#0075c7', '#995302',  '#046b37']
         }
     },
-    // Access store in parent and pass data as prop
-    //computed: {
-    //  FAIRscores(){
-    //    return this.$store.getters['data/FAIRscores']
-    //    }
-    //  },
-    //  created() {
-    //    this.$store.dispatch('data/getFAIRscores')
-    //    },
     mounted(){        
         var traces = this.build_traces()
         var layout = {
-            title: this.title,
             yaxis: {
                 title: "Indicator",
                 showline: false,
@@ -54,14 +44,19 @@ export default {
                 showline: true
             },
             showlegend: false,
-            height: 600,
-            width: 600,
+            height: 350,
             hovermode: "closest",
-            hoverlabel: { bgcolor: "#FFF" }
+            hoverlabel: { bgcolor: "#FFF" },
+            autosize: true,
+            margin:{
+                autoexpand: true,
+                t:20,
+                l:150
+            },
             };  
 
 
-        Plotly.newPlot("myDiv", {
+        Plotly.newPlot(this.id, {
              "data": traces, 
              "layout":layout, 
             })
@@ -79,11 +74,12 @@ export default {
                     y:  Array(item.scores.length).fill(this.labels[item.indicator]), 
                     x: item.scores,
                     name: this.labels[item.indicator],
-                    text: item.count,
+                    customdata: item.count,
+                    text: item.percent,
                     textposition: 'inside',
-                    texttemplate: '%{text:,}',
-                    hovertemplate: 'Score: %{x:.2f},<br> Number of tools: %{text:,} <extra></extra>',
-                    mode: 'markers', //'markers+text' shows text inside
+                    texttemplate: '%{text:,.1%}',
+                    hovertemplate: 'Score: %{x:.2f}<br>Tools: %{customdata:,}<extra></extra>',
+                    mode: 'markers+text', //'markers+text' shows text inside
                     textfont: {
                         size: 14,
                     },

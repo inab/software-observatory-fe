@@ -89,6 +89,11 @@ export default {
 				path: '/',
 				component: resolve(__dirname, 'pages/index.vue'),
 			});
+      routes.push({
+				name: 'FAIRness',
+				path: '/FAIRness',
+				component: resolve(__dirname, 'pages/FAIRness'),
+			});
 			routes.push({
 				name: 'Data',
 				path: '/Data',
