@@ -13,7 +13,9 @@
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
@@ -41,12 +43,24 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.1.0",
     "@nuxtjs/vuetify": "^1.12.3",
+    "@socheatsok78/storybook-addon-vuetify": "^0.1.9",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-docs": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack4": "^6.5.10",
+    "@storybook/manager-webpack4": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/vue": "^6.5.10",
     "@vue/test-utils": "^1.3.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.4.4",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-storybook": "^0.6.4",
     "eslint-plugin-vue": "^8.2.0",
     "husky": "^8.0.0",
     "jest": "^27.4.4",
@@ -58,6 +72,7 @@
     "stylelint-config-recommended-vue": "^1.1.0",
     "stylelint-config-standard": "^24.0.0",
     "ts-jest": "^27.1.1",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "vue-loader": "^15.10.0"
   }
 }
