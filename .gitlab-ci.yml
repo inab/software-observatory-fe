@@ -33,7 +33,7 @@ setup:
 docker-build:
   # Use the official docker image.
   image: docker:latest
-  stage: build
+  stage: build-and-test
   services:
     - docker:dind
   before_script:
@@ -56,7 +56,7 @@ docker-build:
     - if: $CI_COMMIT_BRANCH
       exists:
         - Dockerfile
-        
+
 storybook:
   stage: build-and-test
   artifacts:
@@ -76,7 +76,7 @@ deploy-storybook:
   environment:
     name: storybook/$CI_COMMIT_REF_SLUG
     url: https://your-orga.gitlab.io/your-group/your-project/$CI_COMMIT_REF_SLUG/storybook/
-    on_stop: remove STORYBOOK
+    on_stop: remove-storybook
   only:
     - branches
 
