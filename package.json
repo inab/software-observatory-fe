@@ -2,6 +2,7 @@
   "name": "observatory-fe",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://inab.github.io/software-observatory-fe",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -14,6 +15,8 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
     "prepare": "husky install",
     "test": "jest",
+    "predeploy": "npm run build-storybook",    
+    "deploy-storybook": "gh-pages -d storybook-static",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -62,6 +65,7 @@
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-storybook": "^0.6.4",
     "eslint-plugin-vue": "^8.2.0",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.0",
     "jest": "^27.4.4",
     "lint-staged": "^12.1.2",
