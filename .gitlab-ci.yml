@@ -10,6 +10,26 @@
 # This template uses one generic job with conditional builds
 # for the default branch and all other (MR) branches.
 
+stages:
+  - setup
+  - build-and-test
+  - deployment
+  - pages
+
+# stage: setup
+
+setup:
+  stage: setup
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+  script:
+    - yarn
+
 docker-build:
   # Use the official docker image.
   image: docker:latest
