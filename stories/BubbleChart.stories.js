@@ -12,8 +12,8 @@ const Template = (args, { argTypes }) => ({
   template: '<v-card><BubbleChart v-bind="$props" /></v-card>',
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Findability = Template.bind({});
+Findability.args = {
   fair_scores : 
     [
         {

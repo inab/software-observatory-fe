@@ -3,7 +3,6 @@ import colors from 'vuetify/es5/util/colors'
 
 
 export default {
-  // dev
   
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
