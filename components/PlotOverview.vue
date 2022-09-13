@@ -16,6 +16,7 @@
 
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex'
 
 var layout_old = {title:false,
               showlegend: false,
@@ -114,7 +115,6 @@ export default {
               "Historical homepage accessibility":[0,0,0,0,0,0,0,0,22]
               }
             },
-      features : {"Name": 43987, "Description": 43217, "Version": 21501, "Type": 40900, "Links": 37848, "Publication": 28160, "Download": 21548, "Installation instructions": 17522, "Test": 3567, "Source code": 18086, "Operating system": 30400, "Input format": 8399, "Output format": 8478, "Dependencies": 9921, "Documentation": 26509, "License": 22977, "Authors": 26183, "Repository": 18462, "Historical number of citations": 20323, "Bioschemas": 36045, "SSL": 36045, "Historical homepage accessibility": 36045},
       colors: ['#7DC370', 
               '#7DC370', 
               '#7DC370', 
@@ -134,6 +134,11 @@ export default {
                 '#B7482D',
                 '#0A589F']
       }
+  },
+  computed: {
+    ...mapGetters( 'data',  {
+      features : 'Features'
+    })
   },
   mounted() {
     var scatter_data = {

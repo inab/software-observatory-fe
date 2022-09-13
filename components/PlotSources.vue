@@ -15,22 +15,12 @@
 </style>
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex'
 
 export default {
     props: ['small'],
     data() {
         return {
-            counts: {
-                "sourceforge": [3087, 7, 294, 85, 36, 11], 
-                "opeb_metrics": [0, 20484, 12377, 2714, 408, 58], 
-                "github": [0, 0, 10516, 1237, 374, 53], 
-                "toolshed": [4742, 25, 339, 162, 127, 55], 
-                "bitbucket": [0, 0, 309, 43, 28, 6], 
-                "bioconductor": [4, 1, 475, 1371, 230, 2], 
-                "bioconda": [65, 3294, 3792, 2647, 408, 58], 
-                "galaxy": [1, 1200, 182, 19, 40, 48], 
-                "biotools": [13, 16017, 8847, 2578, 389, 57]
-                },
             nums: ['1', '2', '3', '4', '5'],
             colors_primary:['#1d4421', '#3d643f', '#5d865e', '#80aa80', '#a3cfa3', '#c9f5c8'],
             colors_secondary:['#b72f1e', '#f88b69',  '#f9d3c6', '#3669a3'],
@@ -45,16 +35,6 @@ export default {
                 'bitbucket':'Bitbucket', 
                 'opeb_metrics':'OpenEBench'
             },
-            counts_cummulative: {
-                "1": 7912, 
-                "2": 28426, 
-                "3": 40803, 
-                "4": 43517, 
-                "5": 43925, 
-                "6": 43983, 
-                "7": 43987, 
-                "8": 43987, 
-                "9": 43987},
             layout_base: {
                 barmode: 'stack',
                 xaxis: {
@@ -75,6 +55,12 @@ export default {
                 responsive: true,
                 displayModeBar: false}
             }
+    },
+    computed: {
+        ...mapGetters( 'data', {
+            coverage_sources : 'CoverageSorces'
+        })
+
     },
     mounted() {
         var colors = {
@@ -121,17 +107,15 @@ export default {
                 return l
 
             }
-
-}
-
+        }
     },
     methods: {
         build_bar_traces(colors){
             var traces = []
-            for (var [key, value] of Object.entries(this.counts)) {
+            for (var [key, value] of Object.entries(this.coverage_sources['counts'])) {
                 var trace = {
                     x: this.nums,
-                    y: this.counts[key],
+                    y: this.coverage_sources['counts'][key],
                     name: this.titles[key],
                     marker: {
                         color: colors[key]
@@ -146,7 +130,7 @@ export default {
             return traces
         },
         build_line_trace(n){
-            return this.counts_cummulative  [n]
+            return this.coverage_sources['counts_cummulative']  [n]
         }
     }
 }

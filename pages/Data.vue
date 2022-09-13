@@ -59,24 +59,29 @@
                 :class="{'plot-card': !small , 'plot-card-small': small}" >
                 <card-title text="Consolidated Research Software (meta)data"></card-title>
                     <v-row 
-                    class="mt-0"
-                    justify="center">
+                        class="mt-0"
+                        justify="center">
                         <v-col
                         xl="9"
                         lg="11"
                         md="12"
                         sm="12"
                         cols="12"
-                         >
-                            <PlotOverview />    
+                        >
+                            <v-skeleton-loader
+                                v-if="$store.state.data._unLoaded.features"
+                                class="mb-5 ml-10 mr-10"
+                                type="card"
+                                />
+                            <PlotOverview v-else />    
                         </v-col>
                         <v-col
-                        xl="3"
-                        lg="10"
-                        md="10"
-                        sm="10"
-                        cols="10"
-                        justify-self="left">
+                            xl="3"
+                            lg="10"
+                            md="10"
+                            sm="10"
+                            cols="10"
+                            justify-self="left">
                             <p class="text--secondary mb-6 card-content caption">
                                 <span class="highlight">Features obtained from the different software metadata sources and total number of 
                                 instances for which each feature exists in the dataset.</span>
@@ -91,17 +96,17 @@
                 </v-card>
             </v-col>
             <v-col 
-            xl="9"
-            lg="12"
-            md="12"
-            sm="12"
-            cols="12">
+                xl="9"
+                lg="12"
+                md="12"
+                sm="12"
+                cols="12">
                 <v-card 
-                outlined
-                elevation="2"
-                class="pr-8"
-                :class="{'plot-card': !small , 'plot-card-small': small}">
-                <card-title text="Instances Coverage"></card-title>
+                    outlined
+                    elevation="2"
+                    class="pr-8"
+                    :class="{'plot-card': !small , 'plot-card-small': small}">
+                    <card-title text="Instances Coverage"></card-title>
                     <v-row 
                     align="center"
                     class="mt-0"
@@ -112,8 +117,13 @@
                         md="12"
                         sm="12"
                         cols="12">
+                            <v-skeleton-loader
+                                v-if="$store.state.data._unLoaded.coverageSources"
+                                class="mb-5 ml-10 mr-10"
+                                type="card"
+                                />
 
-                            <PlotSources :small="small" />
+                            <PlotSources :small="small" v-else />
                         </v-col>
                          <v-col 
                         xl="3"
@@ -158,7 +168,12 @@
                         sm="12"
                         cols="12"
                         >
-                            <Completeness />
+                            <v-skeleton-loader
+                                v-if="$store.state.data._unLoaded.completeness"
+                                class="mb-5 ml-10 mr-10"
+                                type="card"
+                                />
+                            <Completeness v-else />
                         </v-col>
 
                         <v-col 
@@ -190,23 +205,28 @@
             cols="12"
             align-self="start">
                 <v-card
-                outlined
-                elevation="2"
-                class="pr-5 pb-3"
-                :class="{'plot-card': !small , 'plot-card-small': small}">
+                    outlined
+                    elevation="2"
+                    class="pr-5 pb-3"
+                    :class="{'plot-card': !small , 'plot-card-small': small}">
                     <card-title text="Types Of Software"></card-title>
                     <v-row 
-                    align="center"
-                    class="mt-0"
-                    justify="space-around">
+                        align="center"
+                        class="mt-0"
+                        justify="space-around">
                         <v-col 
-                        xl="12"
-                        lg="12"
-                        md="12"
-                        sm="12"
-                        cols="12"
-                        >
-                            <PlotTypes />
+                            xl="12"
+                            lg="12"
+                            md="12"
+                            sm="12"
+                            cols="12"
+                            >
+                            <v-skeleton-loader
+                                v-if="$store.state.data._unLoaded.types"
+                                class="mb-5 ml-10 mr-10"
+                                type="card"
+                                />
+                            <PlotTypes v-else/>
                         </v-col>
                         <v-col 
                             xl="12"
@@ -216,15 +236,15 @@
                             cols="12"
                             align-self="start"
                             >
-                                <p class="text--secondary mb-2 card-content caption"> 
-                                    <span class="highlight">Distribution of the types of
-                                    instances in the collection.</span>
-                                    <br>
-                                    Research Software may be implemented or accessed in different ways via web interface, REST API,
-                                    command line, workflow, etc. Current types captured are (<i>cmd, web, db, app, lib,
-                                    ontology, workflow, plugin, sparql, soap, script, rest, workbench, suite</i>)                           
-                                </p>
-                            </v-col>
+                            <p class="text--secondary mb-2 card-content caption"> 
+                                <span class="highlight">Distribution of the types of
+                                instances in the collection.</span>
+                                <br>
+                                Research Software may be implemented or accessed in different ways via web interface, REST API,
+                                command line, workflow, etc. Current types captured are (<i>cmd, web, db, app, lib,
+                                ontology, workflow, plugin, sparql, soap, script, rest, workbench, suite</i>)                           
+                            </p>
+                        </v-col>
                     </v-row>
                 </v-card>
             </v-col>

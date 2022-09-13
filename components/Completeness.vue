@@ -14,18 +14,11 @@
 </style>
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex'
 
 export default {
     data() {
         return {
-            data_cumm : {
-                "feat_num": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25], 
-                "count_cumm": [0, 0, 0, 0, 0, 0, 120, 127, 219, 1507, 3967, 8824, 10835, 13512, 17599, 21630, 26324, 28175, 30328, 32495, 36146, 38503, 42254, 43181, 43767, 43911]
-                },
-            features_xy: {
-                "y": [9, 16, 21, 13, 15, 11, 22, 17, 18, 14, 20, 10, 19, 12, 23, 24, 25, 6, 8, 26, 7],
-                "x": [1288, 4694, 2357, 2677, 4031, 4857, 3751, 1851, 2153, 4087, 3651, 2460, 2167, 2011, 927, 586, 144, 120, 92, 76, 7]
-                },
             layout: {
                 grid: {
                     rows: 2,
@@ -53,10 +46,16 @@ export default {
                 displayModeBar: false}
             }
     },
+    computed: {
+        ...mapGetters( 'data', {
+            completeness : 'Completeness'
+        })
+    },
+
     mounted() {
         var trace_line = {
-            y: this.data_cumm['count_cumm'],
-            x: this.data_cumm['feat_cumm'],
+            y: this.completeness['cummulative_features']['count_cumm'],
+            x: this.completeness['cummulative_features']['feat_cumm'],
             type: 'scatter',
             mode: 'lines',
             marker: {
@@ -67,8 +66,8 @@ export default {
         }
 
         var trace_bar = {
-            y: this.features_xy['x'],
-            x: this.features_xy['y'],
+            y: this.completeness['distribution_features']['x'],
+            x: this.completeness['distribution_features']['y'],
             type:'bar',
             marker: {
                 color: '#ad3d32'
