@@ -18,7 +18,8 @@ export const state = () => ({
         licensesOpenSource: true,
         semanticVersioning: true,
         versionControlCount: true,
-        versionControlRepositories: true
+        versionControlRepositories: true,
+        FAIRscores: true
     }
 })
 
@@ -110,7 +111,8 @@ export const actions = {
 
         commit('setVersionControlRepositories', VersionControlRepositories.data.data);
         commit('setLoaded', {versionControlRepositories: false});
-    }
+    },
+
 }
 
 
@@ -138,3 +140,4 @@ export const mutations = {
         state._currentCollection = collection;
     }   
 }
+

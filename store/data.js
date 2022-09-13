@@ -2,7 +2,6 @@
 export const state = () => ({
     _countsPerSource : {},
     _totalCount: null,
-    _FAIRscores: {},
     _unLoaded: {
         countsPerSource: true,
         FAIRscores: true,
@@ -18,9 +17,6 @@ export const getters = {
     },
     TotalCount(state){
         return state._totalCount
-    },
-    FAIRscores(state){
-        return state._FAIRscores
     }
 }
 
@@ -48,13 +44,8 @@ export const actions = {
         commit('setTotalCount', Total.data[0].data);
         commit('setLoaded', {totalCount: false});
         
-    },
+    }
 
-    async getFAIRscores({commit}){
-        var URL = 'https://observatory.openebench.bsc.es/api/stats/tools/fair_scores';
-        let Scores = await this.$axios.get(URL);
-        commit('setFAIRScores', Scores.data.data);      
-        }
 }
 
 
@@ -66,11 +57,7 @@ export const mutations = {
     setTotalCount(state, count) {
         state._totalCount = count;
     },
-    setFAIRScores(state, scores) {
-        state._FAIRscores = scores;
-    },
     setLoaded(state, loading) {
         state._unLoaded[Object.keys(loading)[0]] = loading[Object.keys(loading)[0]];
-    },
-
+    }
 }

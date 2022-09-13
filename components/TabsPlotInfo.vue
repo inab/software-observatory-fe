@@ -25,7 +25,8 @@
               cols="12"
               class="mb-0 pb-0"
               >
-                <component :is="plotComponent"  v-bind="properties"></component>
+                <component :is="plotComponent" v-bind="properties"></component>
+              
               </v-col>
               <v-col 
                   xl="12"
@@ -50,12 +51,14 @@
       </v-tabs>                        
 </template>
 <script>
+
 export default {
     data: () => ({
       absolute: true,
       overlay: false,
     }),
-    props: ['plotComponent', 'infoComponent', 'properties', 'caption' ]
+    props: ['infoComponent', 'plotComponent', 'properties', 'caption' ],
+    
   }
 </script>
 <style scoped>

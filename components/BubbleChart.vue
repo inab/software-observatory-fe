@@ -1,24 +1,17 @@
 <template>
     <div>
-        <div :id="id">
+        <div :id="princip">
     </div>
     </div>
 </template>
 <script>
 import Plotly from '../assets/plotly-2.12.1.min.js'
+import { mapGetters } from 'vuex';
+
 
 export default {
     props: {
-        fair_scores: {
-            type: Object,
-            required: true
-        },
-        labels: {
-            type: Object,
-            required: true
-        },
-        id: {
-            type: String,
+        princip: {
             required: true
         }
     },
@@ -30,6 +23,11 @@ export default {
             colors: ['#5da4d6', '#ff900e',  '#2ca065'],
             colors_lines: ['#0075c7', '#995302',  '#046b37']
         }
+    },
+    computed: {
+        ...mapGetters('fairness', {
+            fair_scores : 'FAIRscores',
+        }),
     },
     mounted(){        
         var traces = this.build_traces()
@@ -56,24 +54,24 @@ export default {
             };  
 
 
-        Plotly.newPlot(this.id, {
+        Plotly.newPlot(this.princip, {
              "data": traces, 
              "layout":layout, 
             })
-
-
     },
     methods: {
         build_traces(){
             var traces =[]
+            var scores = this.fair_scores[this.princip]['fair_scores']
+            var labels = this.fair_scores[this.princip]['labels']
+            console.log(scores)
 
-            //  DOING: fill with values from FAIR scores 
-            for (let i = 0, len = this.fair_scores.length; i < len; i++){
-                var item = this.fair_scores[i]
+            for (let i = 0, len = scores.length; i < len; i++){
+                var item = scores[i]
                 var trace = {
-                    y:  Array(item.scores.length).fill(this.labels[item.indicator]), 
+                    y:  Array(item.length).fill(labels[item.indicator]), 
                     x: item.scores,
-                    name: this.labels[item.indicator],
+                    name: labels[item.indicator],
                     customdata: item.count,
                     text: item.percent,
                     textposition: 'inside',
@@ -85,7 +83,7 @@ export default {
                     },
                     marker: {
                         size: item.count,
-                        sizeref: 10, //scaling factor
+                        sizeref: .5, //scaling factor
                         sizemode: 'area',
                         color: Array(item.scores.length).fill(this.colors[i]),
                         line: {
