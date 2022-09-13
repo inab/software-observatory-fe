@@ -56,11 +56,21 @@ export default {
                 displayModeBar: false}
             }
     },
-    computed: {
-        ...mapGetters( 'data', {
-            coverage_sources : 'CoverageSorces'
-        })
+    computed:{
+        layout(){
+            var l = this.layout_base
+            if(this.small){
+                l["legend"] = {orientation: "h", y:5, x:-0.2, size: 15}
+                return l
+            }else{
+                l["legend"] = {}
+                return l
 
+            }
+        },
+        ...mapGetters( 'data', {
+            coverage_sources : 'CoverageSources'
+        })
     },
     mounted() {
         var colors = {
@@ -95,19 +105,6 @@ export default {
             "layout": this.layout,
             "config": this.config
             })
-    },
-    computed:{
-        layout(){
-            var l = this.layout_base
-            if(this.small){
-                l["legend"] = {orientation: "h", y:5, x:-0.2, size: 15}
-                return l
-            }else{
-                l["legend"] = {}
-                return l
-
-            }
-        }
     },
     methods: {
         build_bar_traces(colors){

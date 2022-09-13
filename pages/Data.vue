@@ -26,7 +26,6 @@
             cols="12">
             <v-alert
                 elevation="0"
-                icon=""
                 dense
                 colored-border
                 color="#0b579f"
@@ -279,6 +278,11 @@ export default ({
     created() {
         this.$store.dispatch('data/getCountsPerSource');
         this.$store.dispatch('data/getTotalCount');
+        this.$store.dispatch('data/getFeatures');
+        this.$store.dispatch('data/getCoverageSources');
+        this.$store.dispatch('data/getCompleteness');
+        this.$store.dispatch('data/getTypes');
+
     },
     computed: {
         small(){

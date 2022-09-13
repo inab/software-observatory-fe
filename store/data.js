@@ -47,11 +47,11 @@ export const getters = {
 }
 
 
-const base_URL = "http://localhost:3500"
+var base_URL = 'http://localhost:3500' + '/stats/tools/'
 //Actions
 export const actions = {
     async getCountsPerSource({commit}) {
-        var URL = base_URL + '/stats/tools/count_per_source';
+        var URL = base_URL + 'count_per_source';
 
         commit('setLoaded', {countsPerSource: true});
 
@@ -63,7 +63,7 @@ export const actions = {
     },
 
     async getTotalCount({commit}){
-        var URL = base_URL + '/stats/tools/count_total';
+        var URL = base_URL + 'count_total';
 
         commit('setLoaded', {totalCount: true});
 
@@ -75,7 +75,7 @@ export const actions = {
     },
 
     async getFeatures({commit}){
-        var URL = base_URL + '/stats/tools/features';
+        var URL = base_URL + 'features';
 
         commit('setLoaded', {features: true});
 
@@ -87,7 +87,7 @@ export const actions = {
     },
 
     async getCoverageSources({commit}){
-        var URL = base_URL + '/stats/tools/coverage_sources';
+        var URL = base_URL + 'coverage_sources';
 
         commit('setLoaded', {coverageSources: true});
 
@@ -100,8 +100,8 @@ export const actions = {
 
     async getCompleteness({commit}){
         // This plot uses two serires of data, one for the histogram and one for the line (cummulative distribution)
-        var URL_cummulative_features = base_URL + '/stats/tools/features_cummulative';
-        var URL_distribution_features = base_URL + '/stats/tools/distribution_features';
+        var URL_cummulative_features = base_URL + 'features_cummulative';
+        var URL_distribution_features = base_URL + 'distribution_features';
 
         commit('setLoaded', {completeness: true});
 
@@ -119,7 +119,7 @@ export const actions = {
     },
 
     async getTypes({commit}){
-        var URL = base_URL + '/stats/tools/types_count';
+        var URL = base_URL + 'types_count';
 
         commit('setLoaded', {types: true});
 
