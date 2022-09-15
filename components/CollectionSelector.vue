@@ -116,14 +116,10 @@ export default {
                 this.model=idx
                 this.$store.dispatch('trends/getCurrentCollection', this.collections[this.model].id)
 
-                this.$store.dispatch("trends/getLicensesSunburst");
-                this.$store.dispatch("trends/getLicensesOpenSource");
-                this.$store.dispatch("trends/getSemanticVersioning");
-                this.$store.dispatch("trends/getVersionControlCount");
-                this.$store.dispatch("trends/getVersionControlRepositories");
             }else{
                 this.model=null
                 this.$store.dispatch('trends/getCurrentCollection', 'tools')
+            };
 
                 this.$store.dispatch("trends/getLicensesSunburst");
                 this.$store.dispatch("trends/getLicensesOpenSource");
@@ -131,7 +127,7 @@ export default {
                 this.$store.dispatch("trends/getVersionControlCount");
                 this.$store.dispatch("trends/getVersionControlRepositories");
 
-            }
+            
         }
     }
 }

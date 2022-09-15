@@ -38,10 +38,12 @@
 </template>
 <script>
 import CollectionSelector from '~/components/CollectionSelector.vue';
+
 export default {
     name: "Trends",
+
     created() {
-        this.$store.dispatch("trends/getLicensesSunburst");
+        this.$store.dispatch("trends/getLicensesSunburst", 'tools');
         this.$store.dispatch("trends/getLicensesOpenSource");
         this.$store.dispatch("trends/getSemanticVersioning");
         this.$store.dispatch("trends/getVersionControlCount");

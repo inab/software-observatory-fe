@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Plotly from '../assets/plotly-2.12.1.min.js'
+import Plotly from 'plotly.js-dist'
 import { mapGetters } from 'vuex';
 
 export default {
@@ -82,7 +82,6 @@ export default {
     },
   methods: {
     build_trace(x, y, name, color, border, labs){
-      console.log(x)
       var X = this.data_licenses[x]
       var Y = this.data_licenses[y]
       var trace = {

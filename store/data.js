@@ -55,11 +55,16 @@ export const actions = {
 
         commit('setLoaded', {countsPerSource: true});
 
-        let Counts = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setCountsPerSource', Counts.data.data);
+        commit('setCountsPerSource', result);
         commit('setLoaded', {countsPerSource: false});
     
+    },
+
+    async GET_URL({commit}, URL){
+        let result = await this.$axios.get(URL);
+        return result.data.data
     },
 
     async getTotalCount({commit}){
@@ -67,9 +72,9 @@ export const actions = {
 
         commit('setLoaded', {totalCount: true});
 
-        let Total = await this.$axios.get(URL);
-        
-        commit('setTotalCount', Total.data.data);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
+
+        commit('setTotalCount', result);
         commit('setLoaded', {totalCount: false});
         
     },
@@ -79,9 +84,9 @@ export const actions = {
 
         commit('setLoaded', {features: true});
 
-        let Features = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setFeatures', Features.data.data);
+        commit('setFeatures', result);
         commit('setLoaded', {features: false});
         
     },
@@ -91,9 +96,9 @@ export const actions = {
 
         commit('setLoaded', {coverageSources: true});
 
-        let CoverageSources = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setCoverageSources', CoverageSources.data.data);
+        commit('setCoverageSources', result);
         commit('setLoaded', {coverageSources: false});
         
     },
@@ -105,15 +110,15 @@ export const actions = {
 
         commit('setLoaded', {completeness: true});
 
-        let cummulative_features = await this.$axios.get(URL_cummulative_features);
-        let distribution_features = await this.$axios.get(URL_distribution_features);
+        let result_cummulative_features = await this.cache.dispatch('trends/GET_URL', URL_cummulative_features);
+        let result_distribution_features = await this.cache.dispatch('trends/GET_URL', URL_distribution_features);
 
-        let Completeness = {
-            cummulative_features: cummulative_features.data.data,
-            distribution_features: distribution_features.data.data
-        }
+        commit('setCompleteness', {
+            cummulative_features: result_cummulative_features, 
+            distribution_features: result_distribution_features
+        });
+ 
         
-        commit('setCompleteness', Completeness);
         commit('setLoaded', {completeness: false});
         
     },
@@ -123,13 +128,12 @@ export const actions = {
 
         commit('setLoaded', {types: true});
 
-        let Types = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setTypes', Types.data.data);
+        commit('setTypes', result);
         commit('setLoaded', {types: false});
         
-    }
-
+    },
 
 }
 

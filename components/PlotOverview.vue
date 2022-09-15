@@ -15,7 +15,7 @@
 </style>
 
 <script>
-import Plotly from '../assets/plotly-2.12.1.min.js'
+import Plotly from 'plotly.js-dist'
 import { mapGetters } from 'vuex'
 
 var layout_old = {title:false,

@@ -71,7 +71,7 @@ export const actions = {
 
         commit('setLoaded', {FAIRscores:true})
 
-        let FAIRscores = await this.$axios.get(URL);
+        let FAIRscores = await this.cache.dispatch('trends/GET_FAIR_SCORES', URL);
 
         let results = {
             'F': {
@@ -98,6 +98,11 @@ export const actions = {
 
         commit('setFAIRscores', results);
         commit('setLoaded', {FAIRscores: false})
+        },
+
+    async GET_FAIR_SCORES({commit, state}, URL){
+        let FAIRscores = await this.$axios.get(URL);
+        return FAIRscores.data.data
         }
     }
 

@@ -1,3 +1,5 @@
+import { cacheAction } from 'vuex-cache';
+
 //state
 export const state = () => ({
     _licensesSunburst: [],
@@ -57,26 +59,31 @@ export const actions = {
     async getCurrentCollection({commit}, collection){
         commit('setCurrentCollection', collection)
     },
+    
     async getLicensesSunburst({commit, state}){
         var URL = BASE_URL + 'licenses_summary_sunburst?collection=' + state._currentCollection;
 
         commit('setLoaded', {licensesSunburst: true});
 
-        let LicensesSunburst = await this.$axios.get(URL);
-        console.log(LicensesSunburst.data.data)
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setLicensesSunburst', LicensesSunburst.data.data);
+        commit('setLicensesSunburst', result);
         commit('setLoaded', {licensesSunburst: false});
     },
 
+    async GET_URL({commit, state}, URL){
+        let result = await this.$axios.get(URL);
+        return result.data.data
+    },
+    
     async getLicensesOpenSource({commit, state}){
         var URL = BASE_URL + 'licenses_open_source?collection=' + state._currentCollection;
 
         commit('setLoaded', {licensesOpenSource: true});
 
-        let LicensesOpenSource = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setLicensesOpenSource', LicensesOpenSource.data.data);
+        commit('setLicensesOpenSource', result);
         commit('setLoaded', {licensesOpenSource: false});
     },
 
@@ -85,31 +92,35 @@ export const actions = {
 
         commit('setLoaded', {semanticVersioning: true});
 
-        let SemanticVersioning = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
         
-        commit('setSemanticVersioning', SemanticVersioning.data.data);
+        commit('setSemanticVersioning', result);
         commit('setLoaded', {semanticVersioning: false});
-    },
+
+    }, 
 
     async getVersionControlCount({commit, state}){
+
         var URL = BASE_URL + 'version_control_count?collection=' + state._currentCollection;
 
         commit('setLoaded', {versionControlCount: true});
 
-        let VersionControlCount = await this.$axios.get(URL);
-        
-        commit('setVersionControlCount', VersionControlCount.data.data);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
+
+        commit('setVersionControlCount', result);
         commit('setLoaded', {versionControlCount: false});
     },
 
+
     async getVersionControlRepositories({commit, state}){
+
         var URL = BASE_URL + 'version_control_repositories?collection=' + state._currentCollection;
 
         commit('setLoaded', {versionControlRepositories: true});
 
-        let VersionControlRepositories = await this.$axios.get(URL);
+        let result = await this.cache.dispatch('trends/GET_URL', URL);
 
-        commit('setVersionControlRepositories', VersionControlRepositories.data.data);
+        commit('setVersionControlRepositories', result);
         commit('setLoaded', {versionControlRepositories: false});
     },
 
