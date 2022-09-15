@@ -135,6 +135,7 @@ import CollectionSelectorFAIR from '~/components/CollectionSelectorFAIR.vue';
     name: "FAIRness",
  
     created(){
+        this.$store.dispatch("fairness/getControlFAIRscores");
         this.$store.dispatch("fairness/getFAIRscores");
     },
     components: { CollectionSelectorFAIR }
