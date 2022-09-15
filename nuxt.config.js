@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
-
+let development = process.env.NODE_ENV !== 'production'
 
 export default {
   
@@ -51,6 +51,10 @@ export default {
   modules: [
     '@nuxtjs/axios',
   ],
+
+  axios: {
+    baseURL: development ? 'http://localhost:3500' : 'https://observatory.openebench.bsc.es/api'
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

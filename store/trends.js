@@ -1,5 +1,3 @@
-import { cacheAction } from 'vuex-cache';
-
 //state
 export const state = () => ({
     _licensesSunburst: [],
@@ -52,8 +50,7 @@ export const getters = {
 }
 
 //Actions
-//var BASE_URL =  'http://observatory.openebench.bsc.es/dev-api' + '/stats/tools/'
-var BASE_URL = 'http://localhost:3500' + '/stats/tools/'
+var BASE_URL = '/stats/tools/'
 
 export const actions = {
     async getCurrentCollection({commit}, collection){

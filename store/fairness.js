@@ -37,7 +37,7 @@ export const getters = {
     },
 }
 
-var BASE_URL = 'http://localhost:3500' + '/stats/tools/'
+var BASE_URL = '/stats/tools/'
 
 //Actions
 var labels = {
@@ -71,26 +71,26 @@ export const actions = {
 
         commit('setLoaded', {FAIRscores:true})
 
-        let FAIRscores = await this.cache.dispatch('trends/GET_FAIR_SCORES', URL);
+        let FAIRscores = await this.cache.dispatch('fairness/GET_URL', URL);
 
         let results = {
             'F': {
-                'fair_scores': FAIRscores.data.data['F'],
+                'fair_scores': FAIRscores['F'],
                 'labels': labels['F'],
                 'id':'F'
             },
             'A': {
-                'fair_scores': FAIRscores.data.data['A'],
+                'fair_scores': FAIRscores['A'],
                 'labels': labels['A'],
                 'id':'A'
             },
             'I': {
-                'fair_scores': FAIRscores.data.data['I'],
+                'fair_scores': FAIRscores['I'],
                 'labels': labels['I'],
                 'id':'I'
             },
             'R': {
-                'fair_scores': FAIRscores.data.data['R'],
+                'fair_scores': FAIRscores['R'],
                 'labels': labels['R'],
                 'id':'R'
             }
@@ -100,9 +100,9 @@ export const actions = {
         commit('setLoaded', {FAIRscores: false})
         },
 
-    async GET_FAIR_SCORES({commit, state}, URL){
-        let FAIRscores = await this.$axios.get(URL);
-        return FAIRscores.data.data
+    async GET_URL({commit, state}, URL){
+        let result = await this.$axios.get(URL);
+        return result.data.data
         }
     }
 

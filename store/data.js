@@ -47,7 +47,7 @@ export const getters = {
 }
 
 
-var base_URL = 'http://localhost:3500' + '/stats/tools/'
+var base_URL = '/stats/tools/'
 //Actions
 export const actions = {
     async getCountsPerSource({commit}) {
