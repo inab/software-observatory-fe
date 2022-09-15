@@ -53,7 +53,7 @@ export default {
   ],
 
   axios: {
-    baseURL: development ? 'http://localhost:3500' : 'https://observatory.openebench.bsc.es/api'
+    baseURL: development ? 'http://localhost:3500' : 'https://observatory-dev.openebench.bsc.es/api'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
