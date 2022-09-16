@@ -36,7 +36,7 @@
           class="mb-2"
         >
           <v-row
-            class="fill-height"
+            class="fill-height mr-4 ml-4"
             align-content="center"
             justify="center"
             align="center"

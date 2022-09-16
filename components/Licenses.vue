@@ -3,8 +3,15 @@
     outlined
     elevation="2" 
     class="pr-8 pb-6">
-        <v-row class="mb-0 pb-0">
-            <v-col class="ml-8 mt-6 mb-pd-0">
+        <v-row 
+            class="mb-0 pb-0"
+            justify="center">
+            <v-col 
+            md="11"
+            lg="11"
+            sm="10"
+            xs="12"
+            class="ml-8 mt-6 mb-pd-0">
                 <h3 class="text-subtitle mb-4 text-center">Licensing</h3>
                 <p class="text--secondary text-center card-content mb-0">
                     Licensing is one of the most crucial features of a piece of software, 

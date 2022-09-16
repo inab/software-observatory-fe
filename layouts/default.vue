@@ -2,7 +2,7 @@
   <v-app>
     <v-container fluid>
     <v-row 
-      justify="center"
+      justify="space-around"
       >
       <v-col 
       class="ml-6 mb-8"
@@ -15,14 +15,19 @@
       </v-col>
     </v-row>
   <v-container class="main-container" fluid>
-    <v-row justify=center>
-     
+    <v-row 
+    justify="center">
       <div>
       <v-tabs
         :vertical="vertical"
-        class="mt-6 ml-0"
+        :centered="!vertical"
+        v-bind:style="tabsStyle"
+        class="mt-4 ml-0 mb-6 tabs"
         color="#0b579f" 
+        show-arrows
         >
+        <v-tabs-slider></v-tabs-slider>
+
           <v-tab 
                 v-for="section in sections"
                 :key="section.label"
@@ -32,16 +37,18 @@
             <v-icon left>{{ section.icon }} </v-icon>
             {{ section.label }}
           </v-tab>
-          </v-tabs>
-          </div>
-            <v-col
-            sm="12"
-            md="10" 
-            lg="10"
-            xl="7"
-            >
-              <Nuxt />
-            </v-col>
+        </v-tabs>
+       
+        </div> 
+        <v-col
+          xs="12"
+          sm="12"
+          md="12" 
+          lg="10"
+          xl="10"
+          >
+            <Nuxt />
+        </v-col>
 
     </v-row>
     </v-container>
@@ -85,9 +92,12 @@ p{
     padding-top: 1em;
 }
 
+
+
 </style>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
     data(){
@@ -98,20 +108,42 @@ export default {
             {'label':'Data', 'path':'/Data', 'icon': 'mdi-database', 'hover':'Data'},
             {'label':'About', 'path':'/About', 'icon': 'mdi-lightbulb-outline', 'hover':'About'}
             ],
-        bigDis:true
+            bigDis:true,
         }
     },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
+    },
     computed: {
+        ...mapGetters( {
+          'window': 'getWindow'
+        }),
         vertical() {
-			return this.$vuetify.breakpoint.mdAndUp;
-		},
+			    return this.$vuetify.breakpoint.lgAndUp;
+		    },
         tab() {
             return this.$store.getters['getActiveTab']
         },
         columnNeeded(){
             console.log(!this.$vuetify.breakpoint.lgAndUp)
             return this.$vuetify.breakpoint.lgAndUp;
+        },
+        tabsStyle(){
+          var style = {
+            'max-width' : this.window.width*0.9 + 'px'
+          }
+          return style
         }
+    },
+    methods: {
+        handleResize() {
+            this.$store.dispatch('changeWindowWidth', window.innerWidth)
+        },
+        
     }
 } 
 

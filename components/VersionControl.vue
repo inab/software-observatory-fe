@@ -3,17 +3,33 @@
     outlined
     elevation="2">
     <v-container>
-      <v-row class="pt-0">
-        <v-col cols="7" class="mt-0 pt-0">
+      <v-row 
+        class="pt-0"
+        justify="center">
+        <v-col 
+          xl="7"
+          lg="7"
+          md="12"
+          sm="7"
+          xs="12"
+          cols="12"
+          class="mt-0 pt-0">
           <h3 class="text-subtitle mt-6 mb-4 text-center">Repositories and Version Control</h3>
-          <p class="mt-0 text--secondary text-center card-content-vs">
+          <p class="mt-0 text--secondary text-center card-content-vs" >
               Making software available through any of the main software repositories makes it more <span class="highlight">Findable</span> and <span class="highlight">Accessible</span>.
             </p>
             <p class="text--secondary mb-2 text-center card-content-vs">
                 Version control offers a standardized record of source code changes, making it easier to be 
                 <span class="highlight">Reused.</span></p>
         </v-col>
-        <v-col cols="5" align-self="center">
+        <v-col 
+        xl="5"
+        lg="5"
+        md="10"
+        sm="4"
+        xs="10"
+        cols="12"
+        align-self="center">
             <v-skeleton-loader
                 v-if="$store.state.trends._unLoaded.versionControlCount"
                 class="pt-10 pr-4 pl-4 pb-10 number-card-loader"
@@ -40,7 +56,6 @@
           lg="10"
           md="10"
           sm="12"
-          cols="12"
           align-self="start"
           >
             <p class="text--secondary mt-0 mb-2 ml-8 card-content caption"> 
@@ -67,7 +82,7 @@
 }
 
 .number{
-  font-size: 3rem;
+  font-size: 2.7rem;
   padding-top: .6em;
   padding-bottom: .2em;
   color: white !important;
@@ -76,7 +91,7 @@
 .number-text{
   color: white !important;
   font-family: Roboto, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 300;
   line-height: 1.4em;
   word-break: initial;

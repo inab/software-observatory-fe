@@ -17,6 +17,9 @@ export const plugins = [
 // almacenamiento central de vuex
 export const state = () => ({
     _tab : 'Trends',
+    _window : {
+            width: 0,
+    }
    
 });
 
@@ -28,6 +31,9 @@ export const getters = {
     getActiveTab(state){
         return state._tab
     },
+    getWindow(state){
+        return state._window
+    }
    
 }
 
@@ -49,6 +55,12 @@ export const actions = {
         vuexContext.commit('mutateTab', payload)
     },
 
+    changeWindowWidth(vuexContext, payload){
+        vuexContext.commit('setWindowWidth', payload)
+    }
+
+    
+
 }
 // Mutadores
 // El 'unico fin de los mutadores es mutar o modificar state o almacenamiento
@@ -58,4 +70,8 @@ export const mutations = {
     mutateTab(state, payload){
         state._tab=payload.key;
     },
+
+    setWindowWidth(state, payload){
+        state._window.width = payload
+    }
 }
