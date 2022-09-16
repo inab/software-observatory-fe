@@ -8,7 +8,6 @@ import createCache from "vuex-cache";
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
 
-Vue.axios.defaults.baseURL = "https://observatory.openebench.bsc.es/api/stats/";
 
 export const plugins = [
     createCache()
